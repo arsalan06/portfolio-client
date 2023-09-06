@@ -1,0 +1,35 @@
+.mainBox {
+  min-height: 300px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+
+
+.mainBox > :nth-child(6) {
+  color: aliceblue;
+  background-color: tomato;
+}
+
+.mainBox:hover > :nth-child(2) {
+  background-color: #242430;
+  transition: height 1s ease-in;
+  height: 150px;
+}
+.secondaryBox > :nth-child(n) {
+  opacity: 0;
+}
+.mainBox:hover > .secondaryBox > :nth-child(n) {
+  transition: opacity 1.5s ease-in;
+  opacity: 1;
+}
+.secondaryBox {
+  height: 0px;
+  width: 100%;
+  z-index: 9;
+  position: absolute;
+  bottom: 10;
+  padding: 15px 15px;
+}

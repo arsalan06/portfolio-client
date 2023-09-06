@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ThemeProvider theme={theme}>
-          <Box sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", height:"94vh" }}>
             <CssBaseline />
             <TopBar />
             <LeftBar drawerWidth={drawerWidth} />
