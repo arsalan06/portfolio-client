@@ -5,6 +5,7 @@ export const urlText = {
     marginTop: "100px",
     fontFamily: "Poppins",
     fontWeight: 500,
+    textTransform:"capitalize"
   },
 };
 export const settingNavLink = {
