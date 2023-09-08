@@ -71,7 +71,7 @@ function ContactForm() {
               sx={{ ...textField, mt: 4 }}
               placeholder="Message"
               fullWidth
-              //   multiline
+                multiline
               rows={4}
               InputProps={{
                 startAdornment: (

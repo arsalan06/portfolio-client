@@ -13,6 +13,7 @@ import { TfiMenu } from "react-icons/tfi";
 import { Typography } from "@mui/material";
 import { activeLink, settingNavLink, urlText } from "./rightBarStyles";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -100,13 +101,13 @@ function RightBar() {
         <List>
           {pagesArray.map((page, index) => (
             <ListItem key={index} disablePadding>
-              <ListItemButton
-                to={page.path}
-                sx={pathname === page.path ? activeLink : settingNavLink}
+              <Link
+                href={page.path}
+                style={pathname === page.path ? activeLink : settingNavLink}
                 onClick={handleClick}
               >
                 <ListItemText primary={page.title} />
-              </ListItemButton>
+              </Link>
             </ListItem>
           ))}
         </List>

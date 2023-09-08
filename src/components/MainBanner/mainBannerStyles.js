@@ -1,6 +1,8 @@
 export const mainContainer = {
   width: "95%",
+  minHeight: "300px",
   height: "300px",
+  // maxHeight: "400px",
   //   border: "1px solid black",
   marginTop: "50px",
   //   boxShadow: "inset 0 0 0 2000px rgb(36, 36, 46, 0.7)",

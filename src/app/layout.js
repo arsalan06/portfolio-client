@@ -7,7 +7,9 @@ import { Box, CssBaseline, Toolbar } from "@mui/material";
 import RightBar from "@/components/RightBar/RightBar";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "@/theme/theme";
-
+import Transition from "@/components/Transition";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -17,12 +19,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   const drawerWidth = 280;
+  const pathname = usePathname();
+  const onTheRight = { x: "100%" };
+  const inTheCenter = { x: 0 };
+  const onTheLeft = { x: "-100%" };
 
+  const transition = { duration: 0.6, ease: "easeInOut" };
   return (
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com"  />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"
@@ -30,7 +37,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ThemeProvider theme={theme}>
-          <Box sx={{ display: "flex", height:"94vh" }}>
+          <Box sx={{ display: "flex", height: "94vh" }}>
             <CssBaseline />
             <TopBar />
             <LeftBar drawerWidth={drawerWidth} />
@@ -42,7 +49,19 @@ export default function RootLayout({ children }) {
               className="container"
             >
               <Toolbar />
+              <Transition location={pathname}>
               {children}
+              </Transition>
+              {/* <motion.div
+                ref={ref}
+                initial={onTheRight}
+                animate={inTheCenter}
+                exit={onTheLeft}
+                transition={transition}
+                {...rest}
+              >
+                {children}
+              </motion.div> */}
             </Box>
             <RightBar />
           </Box>

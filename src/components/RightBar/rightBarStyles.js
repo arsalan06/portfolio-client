@@ -14,16 +14,13 @@ export const settingNavLink = {
   fontFamily: "Poppins",
   fontWeight: 600,
   fontSize: "18px",
+  textDecoration:"none",
+  cursor:"pointer",
+  marginTop:"10px",
   "&.active": {
     color: "white",
   },
-  "&.MuiListItemText-root": {
-    color: "#8C8C8E",
-    fonstSize: "48px",
-    fontFamily: "Poppins",
-    fontWeight: 600,
-    fontSize: "18px",
-  },
+  marginLeft:"15px",
 };
 
 export const activeLink = {
@@ -32,4 +29,8 @@ export const activeLink = {
   fontFamily: "Poppins",
   fontWeight: 600,
   fontSize: "18px",
+  textDecoration:"none",
+  cursor:"pointer",
+  marginTop:"10px",
+  marginLeft:"15px",
 };

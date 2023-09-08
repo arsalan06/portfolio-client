@@ -36,7 +36,7 @@ function MainBanner() {
       >
         <Box
           sx={{
-            width: "50%",
+            width: "55%",
           }}
         >
           <Typography sx={mainTitle}>Discover my Amazing Art Space!</Typography>

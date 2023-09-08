@@ -91,16 +91,18 @@ body {
 }
 .container {
   height: 94vh;
-  background-image: 
-  linear-gradient(
+   background-image:
+   linear-gradient(
       0deg,
       #1e1e28 20%,
       rgba(21, 21, 21, 0.273) 200%
-    ), url("/images/background2.jpg");
+    ),
+    url("/images/background2.jpg"); 
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  /* box-shadow: linear-gradient(0deg, #1e1e28 20%, rgba(21, 21, 21, 0.273) 200%); */
 }
 body::-webkit-scrollbar {
   width: 10px;
@@ -123,3 +125,8 @@ body::-webkit-scrollbar-track {
 .CircularProgressbar .CircularProgressbar-text {
   fill: white !important;
 }
+/* .page {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+} */
