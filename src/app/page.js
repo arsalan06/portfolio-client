@@ -1,13 +1,19 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-import HomePage from './home/page'
+"use client";
+import Image from "next/image";
+import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
 export default function Home() {
+  const router = useRouter();
+  // const token = localStorage.getItem("accessToken");
+  // console.log("user Token")
+  // console.log("user Token")
+  // console.log(token)
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-    <HomePage/>
+        {/* {token ? router.push("/home/arslan") : router.push("/login")} */}
+        {router.push("/home/arslans")}
       </div>
-      
     </main>
-  )
+  );
 }

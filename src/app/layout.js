@@ -1,15 +1,14 @@
-"use client";
+"use client"
 import "./globals.css";
 import { Inter } from "next/font/google";
-import LeftBar from "@/components/LeftBar/LeftBar";
-import TopBar from "@/components/TopBar/TopBar";
-import { Box, CssBaseline, Toolbar } from "@mui/material";
-import RightBar from "@/components/RightBar/RightBar";
+// import LeftBar from "@/components/LeftBar/LeftBar";
+// import TopBar from "@/components/TopBar/TopBar";
+// import { Box, CssBaseline, Toolbar } from "@mui/material";
+// import RightBar from "@/components/RightBar/RightBar";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "@/theme/theme";
-import Transition from "@/components/Transition";
-import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+// import Transition from "@/components/Transition";
+// import { usePathname } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -18,13 +17,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const drawerWidth = 280;
-  const pathname = usePathname();
-  const onTheRight = { x: "100%" };
-  const inTheCenter = { x: 0 };
-  const onTheLeft = { x: "-100%" };
-
-  const transition = { duration: 0.6, ease: "easeInOut" };
+  // const drawerWidth = 280;
+  // const pathname = usePathname();
   return (
     <html lang="en">
       <head>
@@ -37,7 +31,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ThemeProvider theme={theme}>
-          <Box sx={{ display: "flex", height: "94vh" }}>
+          {/* <Box sx={{ display: "flex", height: "94vh" }}>
             <CssBaseline />
             <TopBar />
             <LeftBar drawerWidth={drawerWidth} />
@@ -52,19 +46,10 @@ export default function RootLayout({ children }) {
               <Transition location={pathname}>
               {children}
               </Transition>
-              {/* <motion.div
-                ref={ref}
-                initial={onTheRight}
-                animate={inTheCenter}
-                exit={onTheLeft}
-                transition={transition}
-                {...rest}
-              >
-                {children}
-              </motion.div> */}
             </Box>
             <RightBar />
-          </Box>
+          </Box> */}
+          {children}
         </ThemeProvider>
       </body>
     </html>
