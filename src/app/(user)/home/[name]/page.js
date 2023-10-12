@@ -5,8 +5,12 @@ import TotalProjectBanner from "@/components/TotalProjectBanner/TotalProjectBann
 import { Box } from "@mui/material";
 import React from "react";
 import { useRouter } from 'next/navigation'
+// import { increment } from "@/redux/slice/counterSlice";
+// import { useDispatch, useSelector } from "@/redux/store";
 function Home({params}) {
   const router = useRouter()
+  // const dispatch=useDispatch()
+  // const {value}=useSelector((state)=>state.counterReducer)
   return (
     <Box
       sx={{
@@ -16,7 +20,8 @@ function Home({params}) {
         alignItems: "center",
       }}
     >
-      {/* <p style={{color:"white"}}>Post: {params.name}</p> */}
+      {/* <p style={{color:"white"}}>Post: {value}</p>
+      <button onClick={()=>dispatch(increment())}>increment</button> */}
       <MainBanner />
       <TotalProjectBanner />
       <Skills/>

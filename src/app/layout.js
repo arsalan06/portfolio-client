@@ -7,8 +7,8 @@ import { Inter } from "next/font/google";
 // import RightBar from "@/components/RightBar/RightBar";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "@/theme/theme";
-// import Transition from "@/components/Transition";
-// import { usePathname } from "next/navigation";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -31,25 +31,9 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ThemeProvider theme={theme}>
-          {/* <Box sx={{ display: "flex", height: "94vh" }}>
-            <CssBaseline />
-            <TopBar />
-            <LeftBar drawerWidth={drawerWidth} />
-            <Box
-              sx={{
-                flexGrow: 1,
-                marginLeft: ` ${drawerWidth}px`,
-              }}
-              className="container"
-            >
-              <Toolbar />
-              <Transition location={pathname}>
-              {children}
-              </Transition>
-            </Box>
-            <RightBar />
-          </Box> */}
+          <Provider store={store}>
           {children}
+          </Provider>
         </ThemeProvider>
       </body>
     </html>

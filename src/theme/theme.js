@@ -2,6 +2,13 @@ import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   typography: {
+    main_heading: {
+      fontFamily: "Poppins",
+      fontWeight: 700,
+      color: "white",
+      marginTop: "5px",
+      fontSize: "24px",
+    },
     section_heading: {
       fontFamily: "Poppins",
       fontWeight: 500,

@@ -105,6 +105,7 @@ function RightBar() {
                 href={page.path}
                 style={pathname === page.path ? activeLink : settingNavLink}
                 onClick={handleClick}
+                passHref={true}
               >
                 <ListItemText primary={page.title} />
               </Link>
