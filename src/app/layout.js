@@ -17,8 +17,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // const drawerWidth = 280;
-  // const pathname = usePathname();
   return (
     <html lang="en">
       <head>
