@@ -26,6 +26,7 @@ import {
   AiOutlineTwitter,
   AiOutlineWhatsApp,
 } from "react-icons/ai";
+import { useDispatch, useSelector } from "@/redux/store";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
@@ -67,6 +68,18 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 const value = 0.66;
 function LeftBar({ drawerWidth }) {
+  const userData =useSelector((state)=>state.loginReducer)
+  let languages
+  let newLanguages
+  // React.useEffect(()=>{
+  //    languages=userData?.userData?.user?.languages?.replace(/'/g, '"');
+  //    newLanguages= JSON.parse(languages)
+  //    console.log("newLanguages")
+  //    console.log(newLanguages)
+  //    console.log(JSON.stringify(newLanguages))
+  //    console.log(JSON.parse(newLanguages))
+  // },[])
+
   return (
     <Box
       sx={{
@@ -85,21 +98,21 @@ function LeftBar({ drawerWidth }) {
             sx={{ width: "70px", height: "70px" }}
           ></Avatar>
         </StyledBadge>
-        <Typography variant="page_title">Muhammad Arsalan</Typography>
-        <Typography variant="body_text">Front-end Developer</Typography>
+        <Typography variant="page_title">{userData?.userData?.user?.fullName}</Typography>
+        <Typography variant="body_text">{userData?.userData?.user?.role}</Typography>
       </Box>
       <Box sx={{ ...innerContainer }}>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
             Residence:
           </Typography>
-          <Typography variant="body_text">Canada</Typography>
+          <Typography variant="body_text">{userData?.userData?.user?.country}</Typography>
         </Box>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
             City:
           </Typography>
-          <Typography variant="body_text">Toronto</Typography>
+          <Typography variant="body_text">{userData?.userData?.user?.city}</Typography>
         </Box>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
@@ -109,18 +122,15 @@ function LeftBar({ drawerWidth }) {
         </Box>
         <Divider sx={{ ...DividerLine }} />
         <Box sx={stackBox}>
-          <Box sx={{ ...languageBarBox }}>
-            <CircularProgressbar value={66} text={`${value * 100}%`} />
+          {JSON.parse(userData?.userData?.user?.languages)?.map((item)=>(
+            <Box sx={{ ...languageBarBox }}>
+            <CircularProgressbar value={item?.proficiency} text={`${item?.proficiency}%`} />
             <Typography variant="page_title" sx={labelText}>
-              English
+              {item?.title}
             </Typography>
           </Box>
-          <Box sx={{ ...languageBarBox }}>
-            <CircularProgressbar value={66} text={`${value * 100}%`} />
-            <Typography variant="page_title" sx={labelText}>
-              Urdu
-            </Typography>
-          </Box>
+          ))}
+          
         </Box>
         <Divider sx={{ ...DividerLine }} />
         <Box sx={{ marginTop: "10px" }}>

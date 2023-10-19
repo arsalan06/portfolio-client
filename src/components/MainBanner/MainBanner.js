@@ -10,9 +10,10 @@ import {
   typewriterText,
 } from "./mainBannerStyles";
 import Image from "next/image";
+import { useDispatch, useSelector } from "@/redux/store";
 function MainBanner() {
   const [isClient, setIsClient] = useState(false);
-
+  const userData = useSelector((state) => state.loginReducer);
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -46,11 +47,7 @@ function MainBanner() {
               <Typography sx={{ ...typewriterText }}>
                 <Typewriter
                   suppressHydrationWarning
-                  words={[
-                    "Reactjs Developer",
-                    "Nextjs Developer",
-                    "Professional Coder",
-                  ]}
+                  words={JSON.parse(userData?.userData?.user?.tageLines)?.map((item) => item)}
                   loop={true}
                   typeSpeed={70}
                 />
