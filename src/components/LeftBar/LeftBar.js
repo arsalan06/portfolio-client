@@ -27,6 +27,7 @@ import {
   AiOutlineWhatsApp,
 } from "react-icons/ai";
 import { useDispatch, useSelector } from "@/redux/store";
+import { userDetailAction } from "@/redux/slice/userDetailSlice";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
@@ -66,20 +67,19 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "light" ? "#ffc107" : "#191923",
   },
 }));
-const value = 0.66;
 function LeftBar({ drawerWidth }) {
-  const userData =useSelector((state)=>state.loginReducer)
-  let languages
-  let newLanguages
-  // React.useEffect(()=>{
-  //    languages=userData?.userData?.user?.languages?.replace(/'/g, '"');
-  //    newLanguages= JSON.parse(languages)
-  //    console.log("newLanguages")
-  //    console.log(newLanguages)
-  //    console.log(JSON.stringify(newLanguages))
-  //    console.log(JSON.parse(newLanguages))
-  // },[])
-
+  const dispatch = useDispatch();
+  const userDetail = useSelector((state) => state.userDetailReducer);
+  let userName;
+  if (typeof window !== "undefined") {
+    // Perform localStorage action
+    userName = localStorage.getItem("userName");
+  }
+  React.useEffect(() => {
+    if(userName){
+    dispatch(userDetailAction(userName));
+    }
+  }, [userName]);
   return (
     <Box
       sx={{
@@ -98,21 +98,29 @@ function LeftBar({ drawerWidth }) {
             sx={{ width: "70px", height: "70px" }}
           ></Avatar>
         </StyledBadge>
-        <Typography variant="page_title">{userData?.userData?.user?.fullName}</Typography>
-        <Typography variant="body_text">{userData?.userData?.user?.role}</Typography>
+        <Typography variant="page_title">
+          {userDetail?.userDetail?.user?.fullName}
+        </Typography>
+        <Typography variant="body_text">
+          {userDetail?.userDetail?.user?.role}
+        </Typography>
       </Box>
       <Box sx={{ ...innerContainer }}>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
             Residence:
           </Typography>
-          <Typography variant="body_text">{userData?.userData?.user?.country}</Typography>
+          <Typography variant="body_text">
+            {userDetail?.userDetail?.user?.country}
+          </Typography>
         </Box>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
             City:
           </Typography>
-          <Typography variant="body_text">{userData?.userData?.user?.city}</Typography>
+          <Typography variant="body_text">
+            {userDetail?.userDetail?.user?.city}
+          </Typography>
         </Box>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
@@ -122,15 +130,20 @@ function LeftBar({ drawerWidth }) {
         </Box>
         <Divider sx={{ ...DividerLine }} />
         <Box sx={stackBox}>
-          {JSON.parse(userData?.userData?.user?.languages)?.map((item)=>(
-            <Box sx={{ ...languageBarBox }}>
-            <CircularProgressbar value={item?.proficiency} text={`${item?.proficiency}%`} />
-            <Typography variant="page_title" sx={labelText}>
-              {item?.title}
-            </Typography>
-          </Box>
-          ))}
-          
+          {userDetail?.userDetail?.user?.fullName &&
+            JSON.parse(userDetail?.userDetail?.user?.languages)?.map(
+              (item, index) => (
+                <Box sx={{ ...languageBarBox }} key={index}>
+                  <CircularProgressbar
+                    value={item?.proficiency}
+                    text={`${item?.proficiency}%`}
+                  />
+                  <Typography variant="page_title" sx={labelText}>
+                    {item?.title}
+                  </Typography>
+                </Box>
+              )
+            )}
         </Box>
         <Divider sx={{ ...DividerLine }} />
         <Box sx={{ marginTop: "10px" }}>
@@ -193,7 +206,7 @@ function LeftBar({ drawerWidth }) {
         </Box>
       </Box>
       <Box sx={footer}>
-        <AiFillLinkedin style={{...socialIcons}}/>
+        <AiFillLinkedin style={{ ...socialIcons }} />
         <AiFillGithub style={socialIcons} />
         <AiOutlineTwitter style={socialIcons} />
         <AiOutlineWhatsApp style={socialIcons} />

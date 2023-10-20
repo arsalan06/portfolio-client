@@ -12,11 +12,18 @@ import {
 import Image from "next/image";
 import { useDispatch, useSelector } from "@/redux/store";
 function MainBanner() {
+  const dispatch = useDispatch();
   const [isClient, setIsClient] = useState(false);
-  const userData = useSelector((state) => state.loginReducer);
+  const userDetail = useSelector((state) => state.userDetailReducer);
+  // const userName = localStorage.getItem("userName");
+  let userName;
+  if (typeof window !== "undefined") {
+    // Perform localStorage action
+    userName = localStorage.getItem("userName");
+  }
   useEffect(() => {
     setIsClient(true);
-  }, []);
+  }, [userName]);
   return (
     <Box
       sx={{
@@ -45,12 +52,16 @@ function MainBanner() {
             {`<code>`}
             {isClient && (
               <Typography sx={{ ...typewriterText }}>
-                <Typewriter
-                  suppressHydrationWarning
-                  words={JSON.parse(userData?.userData?.user?.tageLines)?.map((item) => item)}
-                  loop={true}
-                  typeSpeed={70}
-                />
+                {userDetail?.userDetail?.user?.fullName && (
+                  <Typewriter
+                    suppressHydrationWarning
+                    words={JSON.parse(
+                      userDetail?.userDetail?.user?.tageLines
+                    )?.map((item) => item)}
+                    loop={true}
+                    typeSpeed={70}
+                  />
+                )}
               </Typography>
             )}
 

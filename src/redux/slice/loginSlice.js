@@ -21,6 +21,7 @@ export function loginAction(values, router) {
       const response = await axios.post(`http://localhost:7700/api/v1/login`,values);
         dispatch(loginSlice.actions.getLogin(response.data.data));
       if(response){
+        localStorage.setItem("userName",response?.data?.data?.user?.userName)
         {router.push(`/home/${response?.data?.data?.user?.userName}`)}
       }
     } catch (error) {
