@@ -3,7 +3,8 @@ import { combineReducers } from "redux";
 import counterReducer from "./slice/counterSlice";
 import loginReducer from "./slice/loginSlice";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
-
+import userDetailReducer from "./slice/userDetailSlice";
+import skillsReducer from "./slice/skillsSlice";
 const createNoopStorage = () => {
   return {
     getItem(_key) {
@@ -31,6 +32,8 @@ const rootPersistConfig = {
 const rootReducer = combineReducers({
     counterReducer:counterReducer,
     loginReducer,
+    userDetailReducer,
+    skillsReducer
 });
 
 export { rootPersistConfig, rootReducer };

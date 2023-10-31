@@ -1,15 +1,9 @@
-"use client"
+"use client";
 import "./globals.css";
-import { Inter } from "next/font/google";
-// import LeftBar from "@/components/LeftBar/LeftBar";
-// import TopBar from "@/components/TopBar/TopBar";
-// import { Box, CssBaseline, Toolbar } from "@mui/material";
-// import RightBar from "@/components/RightBar/RightBar";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "@/theme/theme";
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -27,11 +21,9 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
         <ThemeProvider theme={theme}>
-          <Provider store={store}>
-          {children}
-          </Provider>
+          <Provider store={store}>{children}</Provider>
         </ThemeProvider>
       </body>
     </html>

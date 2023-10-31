@@ -14,7 +14,12 @@ function ProjectCard() {
   return (
     // <Box sx={projectCardContainer}>
     <div className={styles.mainBox}>
-      <Image layout="fill" objectFit="cover" src="/images/background2.jpg" />
+      <Image
+        layout="fill"
+        objectFit="cover"
+        src="/images/background2.jpg"
+        alt=""
+      />
       <Box className={styles.secondaryBox}>
         <Typography variant="section_subheading">Web Development</Typography>
         <br />

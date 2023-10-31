@@ -1,16 +1,13 @@
-"use client"
+"use client";
 import MainBanner from "@/components/MainBanner/MainBanner";
 import Skills from "@/components/Skills/Skills";
 import TotalProjectBanner from "@/components/TotalProjectBanner/TotalProjectBanner";
 import { Box } from "@mui/material";
-import React from "react";
-import { useRouter } from 'next/navigation'
-// import { increment } from "@/redux/slice/counterSlice";
-// import { useDispatch, useSelector } from "@/redux/store";
-function Home({params}) {
-  const router = useRouter()
-  // const dispatch=useDispatch()
-  // const {value}=useSelector((state)=>state.counterReducer)
+import React, { useEffect } from "react";
+function Home({ params }) {
+  useEffect(() => {
+    if (params.name) localStorage.setItem("userName", params.name);
+  }, [params?.name]);
   return (
     <Box
       sx={{
@@ -20,11 +17,9 @@ function Home({params}) {
         alignItems: "center",
       }}
     >
-      {/* <p style={{color:"white"}}>Post: {value}</p>
-      <button onClick={()=>dispatch(increment())}>increment</button> */}
-      <MainBanner />
+      <MainBanner userName={params?.name} />
       <TotalProjectBanner />
-      <Skills/>
+      <Skills userName={params?.name} />
     </Box>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 import { Box, Button, Typography } from "@mui/material";
-import { useState, useEffect } from "react";
+import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import {
   exploreButton,
@@ -11,12 +11,17 @@ import {
 } from "./mainBannerStyles";
 import Image from "next/image";
 import { useDispatch, useSelector } from "@/redux/store";
-function MainBanner() {
-  const [isClient, setIsClient] = useState(false);
-  const userData = useSelector((state) => state.loginReducer);
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+import { userDetailAction } from "@/redux/slice/userDetailSlice";
+import { skillsDataAction } from "@/redux/slice/skillsSlice";
+function MainBanner({ userName }) {
+  const dispatch = useDispatch();
+  const userDetail = useSelector((state) => state.userDetailReducer);
+  React.useEffect(() => {
+    if (userName) {
+      dispatch(userDetailAction(userName));
+      dispatch(skillsDataAction(userName));
+    }
+  }, [userName]);
   return (
     <Box
       sx={{
@@ -43,11 +48,13 @@ function MainBanner() {
           <Typography sx={mainTitle}>Discover my Amazing Art Space!</Typography>
           <Typography sx={typewriterTage} suppressHydrationWarning>
             {`<code>`}
-            {isClient && (
+            {userDetail?.userDetail?.user && (
               <Typography sx={{ ...typewriterText }}>
                 <Typewriter
                   suppressHydrationWarning
-                  words={JSON.parse(userData?.userData?.user?.tageLines)?.map((item) => item)}
+                  words={JSON.parse(
+                    userDetail?.userDetail?.user?.tageLines
+                  )?.map((item) => item)}
                   loop={true}
                   typeSpeed={70}
                 />

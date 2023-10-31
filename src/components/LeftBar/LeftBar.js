@@ -1,9 +1,9 @@
 "use client";
-import * as React from "react";
-import { styled } from "@mui/material/styles";
+import React, { useEffect } from "react";
 import { Avatar, Box, Divider, Typography } from "@mui/material";
 import {
   DividerLine,
+  StyledBadge,
   footer,
   header,
   innerContainer,
@@ -12,13 +12,9 @@ import {
   mainContainer,
   socialIcons,
   stackBox,
+  BorderLinearProgress,
 } from "./leftBarStyles";
-import Badge from "@mui/material/Badge";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
 import { TiTick } from "react-icons/ti";
 import {
   AiFillGithub,
@@ -26,60 +22,41 @@ import {
   AiOutlineTwitter,
   AiOutlineWhatsApp,
 } from "react-icons/ai";
-import { useDispatch, useSelector } from "@/redux/store";
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    backgroundColor: "#44b700",
-    color: "#44b700",
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    "&::after": {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      borderRadius: "50%",
-      animation: "ripple 1.2s infinite ease-in-out",
-      border: "1px solid currentColor",
-      content: '""',
-    },
-  },
-  "@keyframes ripple": {
-    "0%": {
-      transform: "scale(.8)",
-      opacity: 1,
-    },
-    "100%": {
-      transform: "scale(2.4)",
-      opacity: 0,
-    },
-  },
-}));
-const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 5,
-  borderRadius: 5,
-  [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: "#191923",
-  },
-  [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 5,
-    backgroundColor: theme.palette.mode === "light" ? "#ffc107" : "#191923",
-  },
-}));
-const value = 0.66;
+import { useSelector } from "@/redux/store";
+import { CircularProgressbar } from "react-circular-progressbar";
+import Link from "next/link";
+// const data="{whatapp:"whatsapp://send?text=WHATEVER_LINK_OR_TEXT_YOU_WANT_TO_SEND|| & phone=923168086871",
+// linkedIn:"linkedin.com",
+// twitter:"twitter.com",
+// git:"github.com"}"
 function LeftBar({ drawerWidth }) {
-  const userData =useSelector((state)=>state.loginReducer)
-  let languages
-  let newLanguages
-  // React.useEffect(()=>{
-  //    languages=userData?.userData?.user?.languages?.replace(/'/g, '"');
-  //    newLanguages= JSON.parse(languages)
-  //    console.log("newLanguages")
-  //    console.log(newLanguages)
-  //    console.log(JSON.stringify(newLanguages))
-  //    console.log(JSON.parse(newLanguages))
-  // },[])
-
+  const userDetail = useSelector((state) => state.userDetailReducer);
+  const skillsData = useSelector((state) => state.skillsReducer);
+  const [skillArray, setSkillArray] = React.useState();
+  let linkObj;
+  useEffect(() => {
+    if (skillsData?.skillsData?.skills?.length > 0) {
+      linkObj = JSON.parse(userDetail?.userDetail?.user?.socialLinks)[0];
+      console.log("linkObj?.linkedIn");
+      console.log("linkObj?.linkedIn");
+      console.log(linkObj.linkedIn);
+      let tempArray = [];
+      for (let i = 0; i < skillsData?.skillsData?.skills?.length; i++) {
+        if (!skillsData?.skillsData?.skills[i]?.isCoreSkill) {
+          tempArray.push(skillsData?.skillsData?.skills[i].title);
+        }
+      }
+      let newTempArray = [];
+      for (let i = 0; i < tempArray?.length; i += 2) {
+        if (tempArray[i] && tempArray[i + 1]) {
+          newTempArray.push(tempArray[i] + "," + " " + tempArray[i + 1]);
+        } else {
+          newTempArray.push(tempArray[i]);
+        }
+      }
+      setSkillArray(newTempArray);
+    }
+  }, [skillsData?.skillsData]);
   return (
     <Box
       sx={{
@@ -98,102 +75,88 @@ function LeftBar({ drawerWidth }) {
             sx={{ width: "70px", height: "70px" }}
           ></Avatar>
         </StyledBadge>
-        <Typography variant="page_title">{userData?.userData?.user?.fullName}</Typography>
-        <Typography variant="body_text">{userData?.userData?.user?.role}</Typography>
+        <Typography variant="page_title">
+          {userDetail?.userDetail?.user?.fullName}
+        </Typography>
+        <Typography variant="body_text">
+          {userDetail?.userDetail?.user?.role}
+        </Typography>
       </Box>
       <Box sx={{ ...innerContainer }}>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
             Residence:
           </Typography>
-          <Typography variant="body_text">{userData?.userData?.user?.country}</Typography>
+          <Typography variant="body_text">
+            {userDetail?.userDetail?.user?.country}
+          </Typography>
         </Box>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
             City:
           </Typography>
-          <Typography variant="body_text">{userData?.userData?.user?.city}</Typography>
+          <Typography variant="body_text">
+            {userDetail?.userDetail?.user?.city}
+          </Typography>
         </Box>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
             Age:
           </Typography>
-          <Typography variant="body_text">26</Typography>
+          <Typography variant="body_text">
+            {userDetail?.userDetail?.user?.age}
+          </Typography>
         </Box>
         <Divider sx={{ ...DividerLine }} />
         <Box sx={stackBox}>
-          {JSON.parse(userData?.userData?.user?.languages)?.map((item)=>(
-            <Box sx={{ ...languageBarBox }}>
-            <CircularProgressbar value={item?.proficiency} text={`${item?.proficiency}%`} />
-            <Typography variant="page_title" sx={labelText}>
-              {item?.title}
-            </Typography>
-          </Box>
-          ))}
-          
+          {userDetail?.userDetail?.user?.languages &&
+            JSON.parse(userDetail?.userDetail?.user?.languages)?.map((item) => (
+              <Box sx={{ ...languageBarBox }} key={item?.title}>
+                <CircularProgressbar
+                  value={item?.proficiency}
+                  text={`${item?.proficiency}%`}
+                />
+                <Typography variant="page_title" sx={labelText}>
+                  {item?.title}
+                </Typography>
+              </Box>
+            ))}
         </Box>
         <Divider sx={{ ...DividerLine }} />
-        <Box sx={{ marginTop: "10px" }}>
-          <Box sx={stackBox}>
-            <Typography variant="page_title" sx={labelText}>
-              HTML
-            </Typography>
-            <Typography variant="body_text">50%</Typography>
-          </Box>
-          <BorderLinearProgress variant="determinate" value={50} />
-        </Box>
-        <Box sx={{ marginTop: "10px" }}>
-          <Box sx={stackBox}>
-            <Typography variant="page_title" sx={labelText}>
-              CSS
-            </Typography>
-            <Typography variant="body_text">50%</Typography>
-          </Box>
-          <BorderLinearProgress variant="determinate" value={50} />
-        </Box>
-        <Box sx={{ marginTop: "10px" }}>
-          <Box sx={stackBox}>
-            <Typography variant="page_title" sx={labelText}>
-              REACT JS
-            </Typography>
-            <Typography variant="body_text">50%</Typography>
-          </Box>
-          <BorderLinearProgress variant="determinate" value={50} />
-        </Box>
-        <Box sx={{ marginTop: "10px" }}>
-          <Box sx={stackBox}>
-            <Typography variant="page_title" sx={labelText}>
-              NEXT JS
-            </Typography>
-            <Typography variant="body_text">50%</Typography>
-          </Box>
-          <BorderLinearProgress variant="determinate" value={50} />
-        </Box>
-        <Box sx={{ marginTop: "10px" }}>
-          <Box sx={stackBox}>
-            <Typography variant="page_title" sx={labelText}>
-              NODE JS
-            </Typography>
-            <Typography variant="body_text">50%</Typography>
-          </Box>
-          <BorderLinearProgress variant="determinate" value={50} />
-        </Box>
+        {skillsData?.skillsData?.skills?.map(
+          (skill) =>
+            skill?.isCoreSkill && (
+              <Box sx={{ marginTop: "10px" }} key={skill.id}>
+                <Box sx={stackBox}>
+                  <Typography variant="page_title" sx={labelText}>
+                    {skill?.title}
+                  </Typography>
+                  <Typography variant="body_text">
+                    {skill?.ratePercent}%
+                  </Typography>
+                </Box>
+                <BorderLinearProgress
+                  variant="determinate"
+                  value={skill?.ratePercent}
+                />
+              </Box>
+            )
+        )}
         <Divider sx={{ ...DividerLine }} />
-        <Box sx={{ ...stackBox, justifyContent: "flex-start", gap: 1 }}>
-          <TiTick style={{ color: "#ffc107" }} />
-          <Typography variant="body_text">Material UI, And Design</Typography>
-        </Box>
-        <Box sx={{ ...stackBox, justifyContent: "flex-start", gap: 1 }}>
-          <TiTick style={{ color: "#ffc107" }} />
-          <Typography variant="body_text">Bootstrap, Tailwind CSS</Typography>
-        </Box>
-        <Box sx={{ ...stackBox, justifyContent: "flex-start", gap: 1 }}>
-          <TiTick style={{ color: "#ffc107" }} />
-          <Typography variant="body_text">GIT knowledge</Typography>
-        </Box>
+        {skillArray?.map((skill, index) => (
+          <Box sx={{ ...stackBox, justifyContent: "flex-start", gap: 1 }}>
+            <TiTick style={{ color: "#ffc107" }} />
+            <Typography variant="body_text">{skill}</Typography>
+          </Box>
+        ))}
       </Box>
       <Box sx={footer}>
-        <AiFillLinkedin style={{...socialIcons}}/>
+        {/* {linkObj?.linkedIn &&( */}
+        <Link href={`${linkObj?.linkedIn}`} target="_blank">
+          <AiFillLinkedin style={{ ...socialIcons }} />
+        </Link>
+        {/* )} */}
+
         <AiFillGithub style={socialIcons} />
         <AiOutlineTwitter style={socialIcons} />
         <AiOutlineWhatsApp style={socialIcons} />

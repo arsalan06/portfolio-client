@@ -9,16 +9,10 @@ import {
 import { loginAction } from "@/redux/slice/loginSlice";
 import { Formik } from "formik";
 import { useRouter } from "next/navigation";
-import { useDispatch, useSelector } from "@/redux/store";
+import { useDispatch } from "@/redux/store";
 function Login() {
-  const dispatch =useDispatch()
+  const dispatch = useDispatch();
   const router = useRouter();
- const userData =useSelector((state)=>state.loginReducer)
- console.log("userData")
- console.log("userData")
- console.log(userData)
-//  let languages=userData?.userData?.user?.languages
-//  console.log(JSON.parse(JSON.stringify(languages)))
   return (
     <Box sx={upperMainContainer}>
       <Box sx={mainContainer}>
@@ -38,7 +32,7 @@ function Login() {
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               // alert(JSON.stringify(values, null, 2));
-              dispatch(loginAction(values, router))
+              dispatch(loginAction(values, router));
               setSubmitting(false);
             }, 400);
           }}
@@ -55,7 +49,6 @@ function Login() {
           }) => (
             <form onSubmit={handleSubmit} style={mainContainer}>
               <TextField
-                id="outlined-basic"
                 variant="outlined"
                 type="text"
                 name="userName"
@@ -67,7 +60,6 @@ function Login() {
               />
               {errors.userName && touched.userName && errors.userName}
               <TextField
-                id="outlined-basic"
                 variant="outlined"
                 type="password"
                 name="password"
@@ -78,7 +70,12 @@ function Login() {
                 value={values.password}
               />
               {errors.password && touched.password && errors.password}
-              <Button variant="contained" type="submit" sx={button} disabled={isSubmitting}>
+              <Button
+                variant="contained"
+                type="submit"
+                sx={button}
+                disabled={isSubmitting}
+              >
                 Login
               </Button>
             </form>
