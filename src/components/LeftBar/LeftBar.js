@@ -81,6 +81,12 @@ function LeftBar({ drawerWidth }) {
         <Typography variant="body_text">
           {userDetail?.userDetail?.user?.role}
         </Typography>
+        <Typography variant="page_title">
+          {userDetail?.userDetail?.user?.fullName}
+        </Typography>
+        <Typography variant="body_text">
+          {userDetail?.userDetail?.user?.role}
+        </Typography>
       </Box>
       <Box sx={{ ...innerContainer }}>
         <Box sx={stackBox}>
@@ -90,10 +96,16 @@ function LeftBar({ drawerWidth }) {
           <Typography variant="body_text">
             {userDetail?.userDetail?.user?.country}
           </Typography>
+          <Typography variant="body_text">
+            {userDetail?.userDetail?.user?.country}
+          </Typography>
         </Box>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
             City:
+          </Typography>
+          <Typography variant="body_text">
+            {userDetail?.userDetail?.user?.city}
           </Typography>
           <Typography variant="body_text">
             {userDetail?.userDetail?.user?.city}
