@@ -130,3 +130,41 @@ body::-webkit-scrollbar {
   left: 15px;
   right: 15px;
 } */
+/* .slick-slide div {
+  outline: none;
+  padding: 8px 0;
+  font-size: 1.5rem;
+} */
+.slider {
+  width: 100%;
+  margin: 2px auto;
+  text-align: center;
+  padding: 10px;
+  color: white;
+}
+.slider .parent-slide {
+  padding: 15px;
+}
+.slider img {
+  display: block;
+  margin: auto;
+}
+.slider:before,
+.slider:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 100px;
+  top: 0;
+  height: 100%;
+  pointer-events: none;
+  /*makes the links behind clickable.*/
+}
+.slider:before {
+  left: 0;
+  background: linear-gradient(to right, #000000, rgba(0, 0, 0, 0));
+}
+.slider:after {
+  right: 0;
+  background: linear-gradient(to left, #000000, rgba(0, 0, 0, 0));
+}

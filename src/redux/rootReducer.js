@@ -5,6 +5,7 @@ import loginReducer from "./slice/loginSlice";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import userDetailReducer from "./slice/userDetailSlice";
 import skillsReducer from "./slice/skillsSlice";
+import projectReducer from "./slice/projectSlice";
 const createNoopStorage = () => {
   return {
     getItem(_key) {
@@ -19,8 +20,10 @@ const createNoopStorage = () => {
   };
 };
 
-const storage = typeof window !== "undefined" ? createWebStorage("local") : createNoopStorage();
-
+const storage =
+  typeof window !== "undefined"
+    ? createWebStorage("local")
+    : createNoopStorage();
 
 const rootPersistConfig = {
   key: "root",
@@ -30,10 +33,11 @@ const rootPersistConfig = {
 };
 
 const rootReducer = combineReducers({
-    counterReducer:counterReducer,
-    loginReducer,
-    userDetailReducer,
-    skillsReducer
+  counterReducer,
+  loginReducer,
+  userDetailReducer,
+  skillsReducer,
+  projectReducer,
 });
 
 export { rootPersistConfig, rootReducer };

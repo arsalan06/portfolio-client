@@ -6,8 +6,6 @@
   cursor: pointer;
 }
 
-
-
 .mainBox > :nth-child(6) {
   color: aliceblue;
   background-color: tomato;
@@ -20,6 +18,19 @@
 }
 .secondaryBox > :nth-child(n) {
   opacity: 0;
+}
+.screenIcon {
+  opacity: 0;
+}
+.mainBox:hover > .screenIcon {
+  transition: opacity 1.5s ease-in;
+  opacity: 1;
+}
+.screenIcon {
+  position: absolute;
+  z-index: 9;
+  top: 88%;
+  left: 93%;
 }
 .mainBox:hover > .secondaryBox > :nth-child(n) {
   transition: opacity 1.5s ease-in;

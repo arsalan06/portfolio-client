@@ -25,11 +25,11 @@ import {
 import { useSelector } from "@/redux/store";
 import { CircularProgressbar } from "react-circular-progressbar";
 import Link from "next/link";
-// const data="{whatapp:"whatsapp://send?text=WHATEVER_LINK_OR_TEXT_YOU_WANT_TO_SEND|| & phone=923168086871",
-// linkedIn:"linkedin.com",
-// twitter:"twitter.com",
-// git:"github.com"}"
+import { useDispatch } from "react-redux";
+import { userDetailAction } from "@/redux/slice/userDetailSlice";
+import { skillsDataAction } from "@/redux/slice/skillsSlice";
 function LeftBar({ drawerWidth }) {
+  const dispatch = useDispatch();
   const userDetail = useSelector((state) => state.userDetailReducer);
   const skillsData = useSelector((state) => state.skillsReducer);
   const [skillArray, setSkillArray] = React.useState();
@@ -37,9 +37,6 @@ function LeftBar({ drawerWidth }) {
   useEffect(() => {
     if (skillsData?.skillsData?.skills?.length > 0) {
       linkObj = JSON.parse(userDetail?.userDetail?.user?.socialLinks)[0];
-      console.log("linkObj?.linkedIn");
-      console.log("linkObj?.linkedIn");
-      console.log(linkObj.linkedIn);
       let tempArray = [];
       for (let i = 0; i < skillsData?.skillsData?.skills?.length; i++) {
         if (!skillsData?.skillsData?.skills[i]?.isCoreSkill) {
@@ -57,6 +54,11 @@ function LeftBar({ drawerWidth }) {
       setSkillArray(newTempArray);
     }
   }, [skillsData?.skillsData]);
+  useEffect(()=>{
+    const name = localStorage.getItem("userName");
+    dispatch(userDetailAction(name));
+    dispatch(skillsDataAction(name));
+  },[])
   return (
     <Box
       sx={{
@@ -81,12 +83,6 @@ function LeftBar({ drawerWidth }) {
         <Typography variant="body_text">
           {userDetail?.userDetail?.user?.role}
         </Typography>
-        <Typography variant="page_title">
-          {userDetail?.userDetail?.user?.fullName}
-        </Typography>
-        <Typography variant="body_text">
-          {userDetail?.userDetail?.user?.role}
-        </Typography>
       </Box>
       <Box sx={{ ...innerContainer }}>
         <Box sx={stackBox}>
@@ -96,16 +92,10 @@ function LeftBar({ drawerWidth }) {
           <Typography variant="body_text">
             {userDetail?.userDetail?.user?.country}
           </Typography>
-          <Typography variant="body_text">
-            {userDetail?.userDetail?.user?.country}
-          </Typography>
         </Box>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
             City:
-          </Typography>
-          <Typography variant="body_text">
-            {userDetail?.userDetail?.user?.city}
           </Typography>
           <Typography variant="body_text">
             {userDetail?.userDetail?.user?.city}
