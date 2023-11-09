@@ -8,6 +8,7 @@ export const theme = createTheme({
       color: "white",
       marginTop: "5px",
       fontSize: "24px",
+      textTransform:"capitalize"
     },
     section_heading: {
       fontFamily: "Poppins",

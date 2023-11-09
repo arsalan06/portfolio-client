@@ -125,46 +125,82 @@ body::-webkit-scrollbar {
 .CircularProgressbar .CircularProgressbar-text {
   fill: white !important;
 }
-/* .page {
-  position: absolute;
-  left: 15px;
-  right: 15px;
-} */
-/* .slick-slide div {
-  outline: none;
-  padding: 8px 0;
-  font-size: 1.5rem;
-} */
-.slider {
-  width: 100%;
-  margin: 2px auto;
+
+
+.swiper-slide {
   text-align: center;
-  padding: 10px;
-  color: white;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.slider .parent-slide {
-  padding: 15px;
-}
-.slider img {
+
+.swiper-slide img {
   display: block;
-  margin: auto;
-}
-.slider:before,
-.slider:after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  width: 100px;
-  top: 0;
+  width: 100%;
   height: 100%;
-  pointer-events: none;
-  /*makes the links behind clickable.*/
+  object-fit: cover;
 }
-.slider:before {
-  left: 0;
-  background: linear-gradient(to right, #000000, rgba(0, 0, 0, 0));
+.swiper-pagination{
+  position: relative !important;
+  width: auto !important;
+  top: 20px;
+  margin-top: 10px;
 }
-.slider:after {
-  right: 0;
-  background: linear-gradient(to left, #000000, rgba(0, 0, 0, 0));
+.swiper-pagination-bullet {
+  /* width: 24px !important;
+  height: 24px !important; */
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  color: #000;
+  opacity: 1;
+  background: #55555B !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: relative !important; */
+  /* bottom: 10px !important;
+  left: 20% !important; */
+  z-index: 999 !important;
+}
+
+.swiper-pagination-bullet-active {
+  color: #fff;
+  background: #FFC107 !important;
+}
+
+
+.swiper {
+  padding: 2rem !important;
+}
+
+.swiper .res-slide {
+  min-width: 300px !important;
+  max-width: 400px !important;
+  min-height: 350px !important;
+  border: 2px solid hsl(210, 100%, 50%) !important;
+  border-radius: 20px !important;
+}
+
+.swiper-nav-btns button {
+ position: absolute !important;
+  z-index: 999; 
+  width: 60px !important;
+  height: 50px !important;
+  border-radius: 50px !important;
+  border: none !important;
+  outline: none !important;
+  background-color: hsl(210, 100%, 50%) !important;
+  color: #fff !important;
+  margin: 0px 0.5rem;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5) !important;
+  margin-top: -20px !important;
+  transition: all .5s !important;
+}
+
+.swiper-nav-btns button:hover {
+  background-color: hsl(210, 100%, 40%) !important;
+  cursor: pointer !important;
 }
