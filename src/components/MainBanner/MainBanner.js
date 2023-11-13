@@ -13,8 +13,10 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "@/redux/store";
 import { userDetailAction } from "@/redux/slice/userDetailSlice";
 import { skillsDataAction } from "@/redux/slice/skillsSlice";
+import { useRouter } from "next/navigation";
 function MainBanner({ userName }) {
   const dispatch = useDispatch();
+  const router = useRouter();
   const userDetail = useSelector((state) => state.userDetailReducer);
   React.useEffect(() => {
     if (userName) {
@@ -63,7 +65,11 @@ function MainBanner({ userName }) {
 
             {`</code>`}
           </Typography>
-          <Button variant="contained" sx={exploreButton}>
+          <Button
+            variant="contained"
+            sx={exploreButton}
+            onClick={() => router.push("/portfolio")}
+          >
             Explore Now
           </Button>
         </Box>

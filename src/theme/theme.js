@@ -34,7 +34,7 @@ export const theme = createTheme({
       fontFamily: "Poppins",
       fontSize: "14px",
       color: "#8C8C8E",
-      marginTop: "5px",
+      // marginTop: "5px",
     },
     white_text: {
       fontFamily: "Poppins",

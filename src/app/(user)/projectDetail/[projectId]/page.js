@@ -12,6 +12,8 @@ import Image from "next/image";
 import { Box, Grid, Typography } from "@mui/material";
 import { SwiperNavButtons } from "../SwiperNavButtons";
 import { descriptionCard, labelText, stackBox } from "../projectStyles";
+import TotalProjectBanner from "@/components/TotalProjectBanner/TotalProjectBanner";
+import ContactBanner from "@/components/ContactForm/ContactBanner";
 function projectDetail({ params }) {
   const dispatch = useDispatch();
   const projectData = useSelector((state) => state.projectReducer);
@@ -66,7 +68,7 @@ function projectDetail({ params }) {
           // slidesPerView="auto"
           className="mySwiper"
           style={{
-            width: "900px",
+            width: "950px",
             height: "300px",
             position: "revert",
           }}
@@ -86,16 +88,15 @@ function projectDetail({ params }) {
         </Swiper>
       </Box>
       <Grid container spacing={4}>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
+        <Grid item xs={12} sm={12} md={8} lg={8}>
           <Box sx={descriptionCard}>
             <Typography variant="section_subheading">Description</Typography>
-            <br />
             <Typography variant="body_text">
               {project?.length > 0 && project[0]?.projectDescription}
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
+        <Grid item xs={12} sm={12} md={4} lg={4}>
           <Box sx={descriptionCard}>
             <Box sx={stackBox}>
               <Typography variant="page_title" sx={labelText}>
@@ -124,6 +125,12 @@ function projectDetail({ params }) {
           </Box>
         </Grid>
       </Grid>
+      <Box>
+        <TotalProjectBanner />
+      </Box>
+      <Box>
+        <ContactBanner/>
+      </Box>
     </Box>
   );
 }

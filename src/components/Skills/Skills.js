@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 function Skills() {
   const skillsData = useSelector((state) => state.skillsReducer);
   return (
-    <Box xs={mainContainer}>
+    <Box sx={mainContainer}>
       <Grid container spacing={3}>
         <Grid item md={12} lg={12}>
           <Typography variant="section_heading">My Services</Typography>

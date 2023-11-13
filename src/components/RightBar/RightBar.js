@@ -1,12 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { AiOutlineClose } from "react-icons/ai";
 import { TfiMenu } from "react-icons/tfi";
@@ -29,6 +28,10 @@ function RightBar() {
   const [open, setOpen] = React.useState(false);
   const urlOne = pathname.split("/");
   const url = urlOne[1]?.split("-");
+  let userName;
+  useEffect(() => {
+    userName = localStorage.getItem("userName");
+  }, []);
   const handleClick = () => {
     setOpen(!open);
   };
@@ -41,7 +44,7 @@ function RightBar() {
   const pagesArray = [
     {
       title: "Home",
-      path: "/",
+      path: `/home/${userName}`,
     },
     {
       title: "Portfolio",

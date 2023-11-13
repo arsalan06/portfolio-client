@@ -60,3 +60,22 @@ export const sendButton = {
     color: "black",
   },
 };
+
+export const mainContainer = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: "300px",
+  height: "300px",
+  marginTop: "50px",
+  boxShadow: "-151px 121px 115px 110px rgba(41,41,53,0.61) inset",
+};
+export const mainTitle = {
+  "&.MuiTypography-root": {
+    fontFamily: "Poppins",
+    fontWeight: 700,
+    color: "white",
+    fontSize: "42px",
+  },
+};

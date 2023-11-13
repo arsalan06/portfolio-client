@@ -1,7 +1,12 @@
 export const descriptionCard={
   backgroundColor:"#2B2B37",
   padding:"10px 20px",
-  marginTop:"20px"
+  marginTop:"20px",
+  minHeight:"150px",
+  display: "flex",
+  flexDirection: "column",
+  // alignItems: "center",
+  justifyContent: "center",
 }
 export const labelText = {
   "&.MuiTypography-root": {
