@@ -3,41 +3,30 @@ import { projectsDataAction } from "@/redux/slice/projectSlice";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay, A11y } from "swiper/modules";
 import Image from "next/image";
 import { Box, Grid, Typography } from "@mui/material";
-import { SwiperNavButtons } from "../SwiperNavButtons";
 import { descriptionCard, labelText, stackBox } from "../projectStyles";
 import TotalProjectBanner from "@/components/TotalProjectBanner/TotalProjectBanner";
 import ContactBanner from "@/components/ContactForm/ContactBanner";
+import { base_url } from "@/constant/constant";
 function projectDetail({ params }) {
   const dispatch = useDispatch();
   const projectData = useSelector((state) => state.projectReducer);
   const [project, setProject] = useState([]);
-  const pagination = {
-    clickable: true,
-    renderBullet: function (index, className) {
-      return '<span class="' + className + '">' + (index + 1) + "</span>";
-    },
-  };
   useEffect(() => {
     const userName = localStorage.getItem("userName");
     dispatch(projectsDataAction(userName));
   }, []);
   useEffect(() => {
-    // if (params.projectId) {
     let temObj = projectData?.projectData?.projects?.filter(
       (item) => item.id == params.projectId
     );
     setProject(temObj);
-    // }
   }, [params.projectId, projectData?.projectData?.projects]);
-  console.log(" state");
-  console.log(project);
   return (
     <Box
       sx={{
@@ -49,13 +38,7 @@ function projectDetail({ params }) {
           {project[0]?.projectName}
         </Typography>
       )}
-      <Box
-        sx={
-          {
-            // paddingBottom: "10px",
-          }
-        }
-      >
+      <Box>
         <Swiper
           slidesPerView={3}
           spaceBetween={20}
@@ -73,20 +56,39 @@ function projectDetail({ params }) {
             position: "revert",
           }}
         >
-          {project?.length > 0 &&
-            project[0]?.Media?.projectImages?.map((img) => (
-              <SwiperSlide key={img.id}>
-                <Image
-                  layout="fill"
-                  objectFit="fill"
-                  src={`http://localhost:7700/${img}`}
-                  alt="helo"
-                />
-              </SwiperSlide>
-            ))}
-          {/* <SwiperNavButtons /> */}
+          <Box>
+            {project?.length > 0 &&
+              project[0]?.Media?.projectImages?.map((img) => (
+                <SwiperSlide key={img.id}>
+                  <Image
+                    layout="fill"
+                    objectFit="cover"
+                    src={`${base_url}${img}`}
+                    alt="helo"
+                  />
+                </SwiperSlide>
+              ))}
+          </Box>
         </Swiper>
       </Box>
+      {project?.length > 0 && (
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <video
+            src={`${base_url}${project[0]?.Video?.projectVideo}`}
+            height="300"
+            width="400"
+            title="Iframe Example"
+            controls={true}
+          ></video>
+        </Box>
+      )}
       <Grid container spacing={4}>
         <Grid item xs={12} sm={12} md={8} lg={8}>
           <Box sx={descriptionCard}>
@@ -129,7 +131,7 @@ function projectDetail({ params }) {
         <TotalProjectBanner />
       </Box>
       <Box>
-        <ContactBanner/>
+        <ContactBanner />
       </Box>
     </Box>
   );

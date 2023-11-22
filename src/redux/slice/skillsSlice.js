@@ -1,3 +1,4 @@
+import { api_base_url } from "@/constant/constant";
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const initialState = {
@@ -18,7 +19,7 @@ export function skillsDataAction(name) {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:7700/api/v1/getSkills?userName=${name}`
+        `${api_base_url}getSkills?userName=${name}`
       );
       dispatch(skillsSlice.actions.getSkillsData(response.data.data));
     } catch (error) {

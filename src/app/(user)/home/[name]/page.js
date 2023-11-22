@@ -5,10 +5,14 @@ import TotalProjectBanner from "@/components/TotalProjectBanner/TotalProjectBann
 import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 function Home({ params }) {
-  const [userName, setUserName]=useState("")
+  const [userName, setUserName] = useState("");
   useEffect(() => {
-    if (params.name) {
-      setUserName(params.name)
+    if (params.name !== undefined) {
+      console.log("params.name");
+      console.log("params.name");
+      console.log("params.name");
+      console.log(params.name);
+      setUserName(params.name);
       localStorage.setItem("userName", params.name);
     } else {
       setUserName(localStorage.getItem("userName"));

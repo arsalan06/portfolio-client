@@ -28,6 +28,7 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { userDetailAction } from "@/redux/slice/userDetailSlice";
 import { skillsDataAction } from "@/redux/slice/skillsSlice";
+import { base_url } from "@/constant/constant";
 function LeftBar({ drawerWidth }) {
   const dispatch = useDispatch();
   const userDetail = useSelector((state) => state.userDetailReducer);
@@ -73,7 +74,8 @@ function LeftBar({ drawerWidth }) {
           variant="dot"
         >
           <Avatar
-            src="/images/avatar.jpg"
+            // src="/images/avatar.jpg"
+            src={`${base_url}${userDetail?.userDetail?.user?.profilePic}`}
             sx={{ width: "70px", height: "70px" }}
           ></Avatar>
         </StyledBadge>
@@ -146,7 +148,7 @@ function LeftBar({ drawerWidth }) {
         )}
         <Divider sx={{ ...DividerLine }} />
         {skillArray?.map((skill, index) => (
-          <Box sx={{ ...stackBox, justifyContent: "flex-start", gap: 1 }}>
+          <Box sx={{ ...stackBox, justifyContent: "flex-start", gap: 1 }} key={skill}>
             <TiTick style={{ color: "#ffc107" }} />
             <Typography variant="body_text">{skill}</Typography>
           </Box>

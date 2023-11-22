@@ -2,23 +2,33 @@
 import {
   Box,
   Button,
+  Card,
   Grid,
   InputAdornment,
   TextField,
   Typography,
 } from "@mui/material";
 import React from "react";
-import ContactCard from "../ContactCard/ContactCard";
-import { formContainer, sendButton, textField } from "./contactFormStyles";
+import {
+  contactCardContainer,
+  formContainer,
+  labelText,
+  sendButton,
+  stackBox,
+  textField,
+} from "./contactFormStyles";
 import { BiSolidUser } from "react-icons/bi";
 import { MdAlternateEmail, MdEmail } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import { BsCheck2Circle } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { api_base_url } from "@/constant/constant";
 function ContactForm() {
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
+  const userDetail = useSelector((state) => state.userDetailReducer);
   const {
     register,
     handleSubmit,
@@ -27,7 +37,7 @@ function ContactForm() {
   const handleRequesSubmit = (data) => {
     setLoading(true);
     axios
-      .post("http://localhost:7700/api/v1/sendEmail", data)
+      .post(`${api_base_url}sendEmail`, data)
       .then((res) => {
         setLoading(false);
         setSuccess(true);
@@ -44,18 +54,93 @@ function ContactForm() {
         mb: 4,
       }}
     >
-      <Grid container spacing={4}>
+      <Grid container spacing={2}>
         <Grid item md={12} lg={12}>
           <Typography variant="section_heading">Contact information</Typography>
         </Grid>
-        <Grid item xs={12} sm={12} md={4} lg={4}>
-          <ContactCard />
+        <Grid item xs={12} sm={12} md={5} lg={4}>
+          <Card sx={contactCardContainer}>
+            <Box sx={stackBox}>
+              <Typography variant="page_title" sx={labelText}>
+                Residence:
+              </Typography>
+              <Typography variant="body_text">
+                {userDetail?.userDetail?.user?.country}
+              </Typography>
+            </Box>
+            <Box sx={stackBox}>
+              <Typography variant="page_title" sx={labelText}>
+                City:
+              </Typography>
+              <Typography variant="body_text">
+                {userDetail?.userDetail?.user?.city}
+              </Typography>
+            </Box>
+            <Box sx={stackBox}>
+              <Typography variant="page_title" sx={labelText}>
+                State:
+              </Typography>
+              <Typography variant="body_text">
+                {userDetail?.userDetail?.user?.state}
+              </Typography>
+            </Box>
+          </Card>
         </Grid>
-        <Grid item xs={12} sm={12} md={4} lg={4}>
-          <ContactCard />
+        <Grid item xs={12} sm={12} md={5} lg={4}>
+          <Card sx={contactCardContainer}>
+            <Box sx={stackBox}>
+              <Typography variant="page_title" sx={labelText}>
+                Email:
+              </Typography>
+              <Typography variant="body_text">
+                {userDetail?.userDetail?.user?.email}
+              </Typography>
+            </Box>
+            <Box sx={stackBox}>
+              <Typography variant="page_title" sx={labelText}>
+                Telegram:
+              </Typography>
+              <Typography variant="body_text">
+                {userDetail?.userDetail?.user?.telegram}
+              </Typography>
+            </Box>
+            <Box sx={stackBox}>
+              <Typography variant="page_title" sx={labelText}>
+                Skype:
+              </Typography>
+              <Typography variant="body_text">
+                {userDetail?.userDetail?.user?.skype}
+              </Typography>
+            </Box>
+          </Card>
         </Grid>
-        <Grid item xs={12} sm={12} md={4} lg={4}>
-          <ContactCard />
+        <Grid item xs={12} sm={12} md={5} lg={4}>
+          <Card sx={contactCardContainer}>
+            <Box sx={stackBox}>
+              <Typography variant="page_title" sx={labelText}>
+                Name:
+              </Typography>
+              <Typography variant="body_text">
+                {userDetail?.userDetail?.user?.fullName}
+              </Typography>
+            </Box>
+            <Box sx={stackBox}>
+              <Typography variant="page_title" sx={labelText}>
+                Phone Number:
+              </Typography>
+              <Typography variant="body_text">
+                {userDetail?.userDetail?.user?.phoneNumber}
+              </Typography>
+            </Box>
+            <Box sx={stackBox}>
+              <Typography variant="page_title" sx={labelText}>
+                Age:
+              </Typography>
+              <Typography variant="body_text">
+                {userDetail?.userDetail?.user?.age}
+              </Typography>
+            </Box>
+          </Card>
         </Grid>
       </Grid>
       <Grid container spacing={4} sx={{ mt: 2 }}>

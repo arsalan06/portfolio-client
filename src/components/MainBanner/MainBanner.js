@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "@/redux/store";
 import { userDetailAction } from "@/redux/slice/userDetailSlice";
 import { skillsDataAction } from "@/redux/slice/skillsSlice";
 import { useRouter } from "next/navigation";
+import { base_url } from "@/constant/constant";
 function MainBanner({ userName }) {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -79,7 +80,7 @@ function MainBanner({ userName }) {
           }}
         >
           <Image
-            src="/images/profile2.png"
+            src={`${base_url}${userDetail?.userDetail?.user?.profilePic}`}
             width={270}
             height={330}
             alt="Picture of the author"

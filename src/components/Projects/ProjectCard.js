@@ -8,6 +8,7 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
 import "photoswipe/style.css";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { base_url } from "@/constant/constant";
 function ProjectCard({ data }) {
   const router = useRouter();
   useEffect(() => {
@@ -24,17 +25,13 @@ function ProjectCard({ data }) {
       lightbox = null;
     };
   }, []);
-  console.log("data");
-  console.log("data");
-  console.log(data);
   return (
-    // <Box sx={projectCardContainer}>
-    <div className={styles.mainBox} id="galleryID">
-      <Box class="pswp-gallery" id="my-gallery">
+    <div className={styles.mainBox}>
+      <Box className="pswp-gallery" id="my-gallery">
         {data?.Media?.projectImages.length > 0 &&
           data?.Media?.projectImages?.map((img) => (
             <a
-              href={`http://localhost:7700/${img}`}
+              href={`${base_url}${img}`}
               data-pswp-width="1875"
               data-pswp-height="2500"
               target="_blank"
@@ -43,7 +40,7 @@ function ProjectCard({ data }) {
               <Image
                 layout="fill"
                 objectFit="cover"
-                src={`http://localhost:7700/${img}`}
+                src={`${base_url}${img}`}
                 alt="helo"
               />
             </a>

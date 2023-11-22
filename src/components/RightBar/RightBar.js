@@ -28,10 +28,12 @@ function RightBar() {
   const [open, setOpen] = React.useState(false);
   const urlOne = pathname.split("/");
   const url = urlOne[1]?.split("-");
-  let userName;
+  const [userName, setUserName] = useState("");
+  // let userName;
   useEffect(() => {
-    userName = localStorage.getItem("userName");
+    setUserName(localStorage.getItem("userName"));
   }, []);
+  console.log;
   const handleClick = () => {
     setOpen(!open);
   };
@@ -61,10 +63,12 @@ function RightBar() {
   ];
   return (
     <Drawer
+    // BackdropProps={{ invisible: true }}
       sx={{
         width: drawerWidth,
         flexShrink: 0,
         transition: "width 0.5s linear",
+
         "& .MuiDrawer-paper": {
           width: drawerWidth,
           height: "85vh",
@@ -72,11 +76,14 @@ function RightBar() {
           right: 40,
           backgroundColor: "#20202A",
           transition: "width 0.5s linear",
+          // inset: "unset !important",
         },
       }}
-      variant="permanent"
+      // variant="temporary"
       anchor="right"
       open={true}
+      hideBackdrop={true}
+      disableScrollLock
     >
       <DrawerHeader>
         {drawerWidth === 240 ? (

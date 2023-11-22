@@ -1,3 +1,4 @@
+import { api_base_url } from "@/constant/constant";
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const initialState = {
@@ -18,7 +19,7 @@ export function loginAction(values, router) {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        `http://localhost:7700/api/v1/login`,
+        `${api_base_url}login`,
         values
       );
       dispatch(loginSlice.actions.getLogin(response.data.data));
