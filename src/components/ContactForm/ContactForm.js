@@ -156,6 +156,7 @@ function ContactForm() {
                 }}
                 sx={textField}
                 placeholder="Name"
+                name="name"
                 fullWidth
                 InputProps={{
                   startAdornment: (
@@ -164,14 +165,13 @@ function ContactForm() {
                     </InputAdornment>
                   ),
                 }}
-                {...register("name", {
-                  required: true,
-                })}
+                // {...register("name", {
+                //   required: true,
+                // })}
               />
               {errors.name && (
                 <Typography variant="body_error">
-                  This field is required
-                </Typography>
+                 S</Typography>
               )}
               <TextField
                 sx={{ ...textField, mt: 4 }}

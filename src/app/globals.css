@@ -146,7 +146,10 @@ body::-webkit-scrollbar {
   position: relative !important;
   width: auto !important;
   top: 20px;
-  margin-top: 10px;
+  right: 0px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
 }
 .swiper-pagination-bullet {
   /* width: 24px !important;
@@ -183,8 +186,11 @@ body::-webkit-scrollbar {
   border: 2px solid hsl(210, 100%, 50%) !important;
   border-radius: 20px !important;
 }
-
-.swiper-nav-btns button {
+.swiper-pagination-bullet{
+  margin: 0px !important;
+  border-radius: 25% !important;
+}
+/* .swiper-nav-btns button {
  position: absolute !important;
   z-index: 999; 
   width: 60px !important;
@@ -203,4 +209,4 @@ body::-webkit-scrollbar {
 .swiper-nav-btns button:hover {
   background-color: hsl(210, 100%, 40%) !important;
   cursor: pointer !important;
-}
+} */

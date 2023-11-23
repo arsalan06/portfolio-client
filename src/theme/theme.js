@@ -4,10 +4,10 @@ export const theme = createTheme({
   typography: {
     main_heading: {
       fontFamily: "Poppins",
-      fontWeight: 700,
+      fontWeight: 600,
       color: "white",
       marginTop: "5px",
-      fontSize: "24px",
+      fontSize: "20px",
       textTransform:"capitalize"
     },
     section_heading: {
@@ -34,6 +34,7 @@ export const theme = createTheme({
       fontFamily: "Poppins",
       fontSize: "14px",
       color: "#8C8C8E",
+      textAlign: "left",
       // marginTop: "5px",
     },
     white_text: {

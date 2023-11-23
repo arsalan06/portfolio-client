@@ -8,16 +8,11 @@ function Home({ params }) {
   const [userName, setUserName] = useState("");
   useEffect(() => {
     if (params.name !== undefined) {
-      console.log("params.name");
-      console.log("params.name");
-      console.log("params.name");
-      console.log(params.name);
-      setUserName(params.name);
       localStorage.setItem("userName", params.name);
     } else {
       setUserName(localStorage.getItem("userName"));
     }
-  }, []);
+  }, [params.name]);
   return (
     <Box
       sx={{

@@ -53,7 +53,7 @@ function ProjectCard({ data }) {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
           esse commodi deserunt vitae.
         </Typography>
-        <Link href={`/projectDetail/${data.id}`}>
+        <Link href={`/projectdetail/${data.id}`}>
           <Typography variant="order_text" sx={orderText}>
             show detail
             <Box

@@ -63,7 +63,7 @@ function RightBar() {
   ];
   return (
     <Drawer
-    // BackdropProps={{ invisible: true }}
+      // BackdropProps={{ invisible: true }}
       sx={{
         width: drawerWidth,
         flexShrink: 0,
@@ -76,14 +76,14 @@ function RightBar() {
           right: 40,
           backgroundColor: "#20202A",
           transition: "width 0.5s linear",
-          // inset: "unset !important",
         },
       }}
-      // variant="temporary"
+      variant="temporary"
       anchor="right"
       open={true}
       hideBackdrop={true}
       disableScrollLock
+      disableEnforceFocus
     >
       <DrawerHeader>
         {drawerWidth === 240 ? (

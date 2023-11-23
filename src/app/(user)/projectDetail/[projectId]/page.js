@@ -8,25 +8,30 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay, A11y } from "swiper/modules";
 import Image from "next/image";
-import { Box, Grid, Typography } from "@mui/material";
+import { Avatar, Box, Grid, Typography } from "@mui/material";
 import { descriptionCard, labelText, stackBox } from "../projectStyles";
 import TotalProjectBanner from "@/components/TotalProjectBanner/TotalProjectBanner";
 import ContactBanner from "@/components/ContactForm/ContactBanner";
 import { base_url } from "@/constant/constant";
-function projectDetail({ params }) {
-  const dispatch = useDispatch();
+import { SwiperNavButtons } from "../SwiperNavButtons";
+import { Rating } from "react-simple-star-rating";
+import { ClientReviewAction } from "@/redux/slice/clientsSlice";
+function ProjectDetail({ params }) {
   const projectData = useSelector((state) => state.projectReducer);
+  const clientsReview = useSelector((state) => state.clientsReducer);
+  const dispatch = useDispatch();
   const [project, setProject] = useState([]);
   useEffect(() => {
     const userName = localStorage.getItem("userName");
     dispatch(projectsDataAction(userName));
+    dispatch(ClientReviewAction(userName));
   }, []);
   useEffect(() => {
     let temObj = projectData?.projectData?.projects?.filter(
       (item) => item.id == params.projectId
     );
     setProject(temObj);
-  }, [params.projectId, projectData?.projectData?.projects]);
+  }, [projectData?.projectData]);
   return (
     <Box
       sx={{
@@ -38,28 +43,33 @@ function projectDetail({ params }) {
           {project[0]?.projectName}
         </Typography>
       )}
-      <Box>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Swiper
-          slidesPerView={3}
-          spaceBetween={20}
+          slidesPerView={2}
+          spaceBetween={35}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
           }}
           pagination={true}
-          modules={[Autoplay, Navigation, Pagination, A11y]}
-          // slidesPerView="auto"
+          modules={[Autoplay, Navigation, Pagination]}
           className="mySwiper"
           style={{
-            width: "950px",
+            width: "65vw",
             height: "300px",
-            position: "revert",
           }}
         >
           <Box>
             {project?.length > 0 &&
               project[0]?.Media?.projectImages?.map((img) => (
-                <SwiperSlide key={img.id}>
+                <SwiperSlide key={img}>
                   <Image
                     layout="fill"
                     objectFit="cover"
@@ -69,6 +79,7 @@ function projectDetail({ params }) {
                 </SwiperSlide>
               ))}
           </Box>
+          <SwiperNavButtons />
         </Swiper>
       </Box>
       {project?.length > 0 && (
@@ -76,20 +87,22 @@ function projectDetail({ params }) {
           sx={{
             width: "100%",
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: "center",
             alignItems: "center",
+            mt: 6,
           }}
         >
           <video
             src={`${base_url}${project[0]?.Video?.projectVideo}`}
             height="300"
-            width="400"
+            width="50%"
             title="Iframe Example"
             controls={true}
           ></video>
         </Box>
       )}
-      <Grid container spacing={4}>
+      <Typography variant="main_heading">Project detail</Typography>
+      <Grid container spacing={4} sx={{mb:8}}>
         <Grid item xs={12} sm={12} md={8} lg={8}>
           <Box sx={descriptionCard}>
             <Typography variant="section_subheading">Description</Typography>
@@ -127,6 +140,88 @@ function projectDetail({ params }) {
           </Box>
         </Grid>
       </Grid>
+      <Typography
+        variant="main_heading"
+      >
+        Client reviews
+      </Typography>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Swiper
+          slidesPerView={2}
+          spaceBetween={35}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={true}
+          modules={[Autoplay, Navigation, Pagination]}
+          className="mySwiper"
+          style={{
+            width: "68vw",
+            height: "250px",
+          }}
+        >
+          <Box>
+            {clientsReview?.clientsReview?.clients?.length > 0 &&
+              clientsReview?.clientsReview?.clients?.map((review) => (
+                <SwiperSlide key={review.id}>
+                  <Box
+                    sx={{
+                      backgroundColor: "#2B2B37",
+                      height: "100%",
+                      padding: "15px 15px",
+                      textAlign: "left",
+                    }}
+                  >
+                    <Box sx={{ ...stackBox }}>
+                      <Typography variant="section_subheading">
+                        {review.clientName}
+                      </Typography>
+                      <Avatar
+                        size="Large"
+                        src={`${base_url}${review.clientImage}`}
+                        sx={{
+                          position: "absolute",
+                          top: -10,
+                          right: 10,
+                        }}
+                      ></Avatar>
+                    </Box>
+                    <Typography variant="body_text">
+                      {review?.message}
+                    </Typography>
+                    <Box
+                      sx={{
+                        backgroundColor: "#202029",
+                        padding: "0px 2px",
+                        borderRadius: "30%",
+                        width: "120px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Rating
+                        initialValue={review?.ratting}
+                        size={20}
+                        style={{ marginTop: "5px" }}
+                      />
+                    </Box>
+                  </Box>
+                </SwiperSlide>
+              ))}
+          </Box>
+          <SwiperNavButtons />
+        </Swiper>
+      </Box>
       <Box>
         <TotalProjectBanner />
       </Box>
@@ -137,4 +232,4 @@ function projectDetail({ params }) {
   );
 }
 
-export default projectDetail;
+export default ProjectDetail;

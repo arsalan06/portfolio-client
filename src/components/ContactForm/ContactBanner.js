@@ -15,7 +15,7 @@ function ContactBanner() {
       }}
     >
       <Typography sx={mainTitle}>Ready to order your project?</Typography>
-      <Typography variant="page_title">Let's work together!</Typography>
+      <Typography variant="page_title">Lets work together!</Typography>
       <Button
         variant="contained"
         sx={sendButton}

@@ -2,7 +2,7 @@ import Projects from "@/components/Projects/Projects";
 import { Box } from "@mui/material";
 import React from "react";
 
-function page() {
+function Page() {
   return (
     <Box
       sx={{
@@ -17,4 +17,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

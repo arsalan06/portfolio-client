@@ -6,6 +6,7 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import userDetailReducer from "./slice/userDetailSlice";
 import skillsReducer from "./slice/skillsSlice";
 import projectReducer from "./slice/projectSlice";
+import clientsReducer from "./slice/clientsSlice";
 const createNoopStorage = () => {
   return {
     getItem(_key) {
@@ -38,6 +39,7 @@ const rootReducer = combineReducers({
   userDetailReducer,
   skillsReducer,
   projectReducer,
+  clientsReducer,
 });
 
 export { rootPersistConfig, rootReducer };
