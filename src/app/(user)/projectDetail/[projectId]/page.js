@@ -15,32 +15,25 @@ import ContactBanner from "@/components/ContactForm/ContactBanner";
 import { base_url } from "@/constant/constant";
 import { SwiperNavButtons } from "../SwiperNavButtons";
 import { Rating } from "react-simple-star-rating";
-import { ClientReviewAction } from "@/redux/slice/clientsSlice";
+import ImgsViewer from "react-images-viewer";
+import { projects } from "@/components/Projects/projectData";
 function ProjectDetail({ params }) {
-  const projectData = useSelector((state) => state.projectReducer);
-  const clientsReview = useSelector((state) => state.clientsReducer);
-  const dispatch = useDispatch();
-  const [project, setProject] = useState([]);
+  const [projectData, setProjectData] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currImg, setCurrImg] = useState(0);
   useEffect(() => {
-    const userName = localStorage.getItem("userName");
-    dispatch(projectsDataAction(userName));
-    dispatch(ClientReviewAction(userName));
-  }, []);
-  useEffect(() => {
-    let temObj = projectData?.projectData?.projects?.filter(
-      (item) => item.id == params.projectId
-    );
-    setProject(temObj);
-  }, [projectData?.projectData]);
+    let temObj = projects?.filter((item) => item.id == params.projectId);
+    setProjectData(temObj);
+  }, [projects]);
   return (
     <Box
       sx={{
-        padding: "10px 40px",
+        padding: "10px 25px",
       }}
     >
-      {project?.length > 0 && (
+      {projectData?.length > 0 && (
         <Typography variant="main_heading">
-          {project[0]?.projectName}
+          {projectData[0]?.projectName}
         </Typography>
       )}
       <Box
@@ -67,14 +60,18 @@ function ProjectDetail({ params }) {
           }}
         >
           <Box>
-            {project?.length > 0 &&
-              project[0]?.Media?.projectImages?.map((img) => (
-                <SwiperSlide key={img}>
+            {projectData?.length > 0 &&
+              projectData[0]?.Media?.projectImages?.map((img, index) => (
+                <SwiperSlide key={img.src}>
                   <Image
                     layout="fill"
                     objectFit="cover"
-                    src={`${base_url}${img}`}
+                    src={img.src}
                     alt="helo"
+                    onClick={(e) => {
+                      setIsOpen(true);
+                      setCurrImg(index);
+                    }}
                   />
                 </SwiperSlide>
               ))}
@@ -82,32 +79,39 @@ function ProjectDetail({ params }) {
           <SwiperNavButtons />
         </Swiper>
       </Box>
-      {project?.length > 0 && (
+      {/* <Box sx={{ mt: 8 }}>
+        <Typography variant="main_heading">Project video</Typography>
+      </Box> */}
+      {/* {projectData?.length > 0 && (
         <Box
           sx={{
-            width: "100%",
+            backgroundColor:"#2B2B37",
+            // width: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            mt: 6,
+            mt: 4,
+            padding:"15px 6px"
           }}
         >
           <video
-            src={`${base_url}${project[0]?.Video?.projectVideo}`}
-            height="300"
+            src={`${base_url}${projectData[0]?.Video?.projectVideo}`}
+            height="250"
             width="50%"
             title="Iframe Example"
             controls={true}
           ></video>
         </Box>
-      )}
-      <Typography variant="main_heading">Project detail</Typography>
-      <Grid container spacing={4} sx={{mb:8}}>
+      )} */}
+      <Grid container spacing={2} sx={{ mb: 8 }}>
+        <Grid item xs={12} sm={12} md={12} lg={12} sx={{ mt: 8 }}>
+          <Typography variant="main_heading">Project detail</Typography>
+        </Grid>
         <Grid item xs={12} sm={12} md={8} lg={8}>
           <Box sx={descriptionCard}>
             <Typography variant="section_subheading">Description</Typography>
             <Typography variant="body_text">
-              {project?.length > 0 && project[0]?.projectDescription}
+              {projectData?.length > 0 && projectData[0]?.projectDescription}
             </Typography>
           </Box>
         </Grid>
@@ -118,7 +122,7 @@ function ProjectDetail({ params }) {
                 Order Date:
               </Typography>
               <Typography variant="body_text">
-                {project?.length > 0 && project[0]?.startDate}
+                {projectData?.length > 0 && projectData[0]?.startDate}
               </Typography>
             </Box>
             <Box sx={stackBox}>
@@ -126,7 +130,7 @@ function ProjectDetail({ params }) {
                 Final Date:
               </Typography>
               <Typography variant="body_text">
-                {project?.length > 0 && project[0]?.endDate}
+                {projectData?.length > 0 && projectData[0]?.endDate}
               </Typography>
             </Box>
             <Box sx={stackBox}>
@@ -134,13 +138,13 @@ function ProjectDetail({ params }) {
                 Status:
               </Typography>
               <Typography variant="body_text">
-                {project?.length > 0 && project[0]?.status}
+                {projectData?.length > 0 && projectData[0]?.status}
               </Typography>
             </Box>
           </Box>
         </Grid>
       </Grid>
-      <Typography
+      {/* <Typography
         variant="main_heading"
       >
         Client reviews
@@ -221,13 +225,25 @@ function ProjectDetail({ params }) {
           </Box>
           <SwiperNavButtons />
         </Swiper>
-      </Box>
-      <Box>
+      </Box> */}
+      <Box sx={{ mt: 8 }}>
         <TotalProjectBanner />
       </Box>
       <Box>
         <ContactBanner />
       </Box>
+      {isOpen && (
+        <ImgsViewer
+          imgs={projectData[0]?.Media?.projectImages}
+          currImg={currImg}
+          showThumbnails={true}
+          isOpen={isOpen}
+          onClickPrev={(e) => setCurrImg(currImg - 1)}
+          onClickNext={(e) => setCurrImg(currImg + 1)}
+          onClickThumbnail={(index) => setCurrImg(index)}
+          onClose={(e) => setIsOpen(false)}
+        />
+      )}
     </Box>
   );
 }

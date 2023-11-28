@@ -10,26 +10,16 @@ import {
   typewriterText,
 } from "./mainBannerStyles";
 import Image from "next/image";
-import { useDispatch, useSelector } from "@/redux/store";
-import { userDetailAction } from "@/redux/slice/userDetailSlice";
-import { skillsDataAction } from "@/redux/slice/skillsSlice";
+import { useDispatch } from "@/redux/store";
 import { useRouter } from "next/navigation";
-import { base_url } from "@/constant/constant";
 const MainBanner = ({ userName }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const userDetail = useSelector((state) => state.userDetailReducer);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
-  useEffect(() => {
-    if (userName) {
-      dispatch(userDetailAction(userName));
-      dispatch(skillsDataAction(userName));
-    }
-  }, [userName]);
   return (
     isClient && (
       <Box
@@ -57,26 +47,23 @@ const MainBanner = ({ userName }) => {
             <Typography sx={mainTitle}>
               Discover my Amazing Art Space!
             </Typography>
-            {userDetail?.userDetail?.user?.tageLines.length > 0 && (
-              <Typography sx={typewriterTage} suppressHydrationWarning>
-                {`<code>`}
-                {userDetail?.userDetail?.user && (
-                  <Typography sx={{ ...typewriterText }}>
-                    <Typewriter
-                      suppressHydrationWarning
-                      words={JSON.parse(
-                        userDetail?.userDetail?.user?.tageLines
-                      )?.map((item) => item)}
-                      loop={true}
-                      typeSpeed={70}
-                    />
-                  </Typography>
-                )}
-
-                {`</code>`}
+            <Typography sx={typewriterTage} suppressHydrationWarning>
+              {`<code>`}
+              <Typography sx={{ ...typewriterText }}>
+                <Typewriter
+                  suppressHydrationWarning
+                  words={[
+                    "Professional Coder",
+                    "Reactjs Developer",
+                    "Nextjs Developer",
+                    "Nodejs Develope",
+                  ]}
+                  loop={true}
+                  typeSpeed={70}
+                />
               </Typography>
-            )}
-
+              {`</code>`}
+            </Typography>
             <Button
               variant="contained"
               sx={exploreButton}
@@ -91,7 +78,7 @@ const MainBanner = ({ userName }) => {
             }}
           >
             <Image
-              src={`${base_url}${userDetail?.userDetail?.user?.profilePic}`}
+              src="/images/profile2.png"
               width={270}
               height={330}
               alt="Picture of the author"

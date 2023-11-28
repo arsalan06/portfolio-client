@@ -1,50 +1,32 @@
 import { Box, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { BiChevronRight, BiFullscreen } from "react-icons/bi";
 import { orderText, marginTopClass } from "./projectsStyles";
 import styles from "./style.module.css";
 import Image from "next/image";
-import PhotoSwipeLightbox from "photoswipe/lightbox";
-import "photoswipe/style.css";
-import { useRouter } from "next/navigation";
+import ImgsViewer from "react-images-viewer";
 import Link from "next/link";
-import { base_url } from "@/constant/constant";
 function ProjectCard({ data }) {
-  const router = useRouter();
-  useEffect(() => {
-    let lightbox = new PhotoSwipeLightbox({
-      gallery: "#my-gallery",
-      children: "a",
-      pswpModule: () => import("photoswipe"),
-    });
-
-    lightbox.init();
-
-    return () => {
-      lightbox.destroy();
-      lightbox = null;
-    };
-  }, []);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currImg, setCurrImg] = useState(0);
   return (
     <div className={styles.mainBox}>
       <Box className="pswp-gallery" id="my-gallery">
-        {data?.Media?.projectImages.length > 0 &&
-          data?.Media?.projectImages?.map((img) => (
-            <a
-              href={`${base_url}${img}`}
-              data-pswp-width="1875"
-              data-pswp-height="2500"
-              target="_blank"
-              key={img}
-            >
-              <Image
-                layout="fill"
-                objectFit="cover"
-                src={`${base_url}${img}`}
-                alt="helo"
-              />
-            </a>
-          ))}
+        {data?.Media?.projectImages.length > 0 && (
+          <Image
+            layout="fill"
+            objectFit="cover"
+            src={data?.Media?.projectImages[0]?.src}
+            alt="helo"
+            style={{
+              borderRadius: "8px",
+            }}
+            onClick={(e) => {
+              setIsOpen(true);
+              setCurrImg(0);
+            }}
+          />
+        )}
       </Box>
       <Box className={styles.secondaryBox}>
         <Typography variant="section_subheading">Web Development</Typography>
@@ -69,6 +51,16 @@ function ProjectCard({ data }) {
       <Box className={styles.screenIcon}>
         <BiFullscreen style={{ color: "white", fontSize: "22px" }} />
       </Box>
+      <ImgsViewer
+        imgs={data?.Media?.projectImages}
+        currImg={currImg}
+        showThumbnails={true}
+        isOpen={isOpen}
+        onClickPrev={(e) => setCurrImg(currImg - 1)}
+        onClickNext={(e) => setCurrImg(currImg + 1)}
+        onClickThumbnail={(index) => setCurrImg(index)}
+        onClose={(e) => setIsOpen(false)}
+      />
     </div>
     // </Box>
   );
