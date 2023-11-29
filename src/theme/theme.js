@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material";
 
-export const theme = createTheme({
+export const themeTemplate = createTheme({
   typography: {
     main_heading: {
       fontFamily: "Poppins",

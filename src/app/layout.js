@@ -1,9 +1,4 @@
-"use client";
 import "./globals.css";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "@/theme/theme";
-import { Provider } from "react-redux";
-import { store } from "@/redux/store";
 import { Box } from "@mui/material";
 
 export const metadata = {
@@ -23,12 +18,17 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body suppressHydrationWarning={true}>
-        <Box sx={{
-          padding:{xs:"0px 0px", sm:"0px 0px", md:"0px 40px", lg:"0px 40px"}
-        }}>
-        <ThemeProvider theme={theme}>
-          <Provider store={store}>{children}</Provider>
-        </ThemeProvider>
+        <Box
+          sx={{
+            padding: {
+              xs: "0px 0px",
+              sm: "0px 0px",
+              md: "0px 40px",
+              lg: "0px 40px",
+            },
+          }}
+        >
+          {children}
         </Box>
       </body>
     </html>

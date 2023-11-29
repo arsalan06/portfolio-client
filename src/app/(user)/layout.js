@@ -10,6 +10,10 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import LeftDrawer from "@/components/LeftBar/LeftDrawer";
 import RightDrawer from "@/components/RightBar/RightDrawer";
+import { ThemeProvider } from "@mui/material/styles";
+import { themeTemplate } from "@/theme/theme";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
 export const widthContext = createContext();
 function UserLayout({ children }) {
   const theme = useTheme();
@@ -29,6 +33,8 @@ function UserLayout({ children }) {
   const drawerWidth = 280;
   const pathname = usePathname();
   return (
+    <Provider store={store}>
+    <ThemeProvider theme={themeTemplate}>
     <widthContext.Provider value={{ bodyRightMargin, handleMarginSetting }}>
       <Box sx={{ display: "flex", height: "94vh" }}>
         <CssBaseline />
@@ -62,6 +68,8 @@ function UserLayout({ children }) {
         )}
       </Box>
     </widthContext.Provider>
+    </ThemeProvider>
+    </Provider>
   );
 }
 
