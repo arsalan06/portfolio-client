@@ -33,7 +33,6 @@ function RightBar() {
   useEffect(() => {
     setUserName(localStorage.getItem("userName"));
   }, []);
-  console.log;
   const handleClick = () => {
     setOpen(!open);
   };
@@ -68,7 +67,7 @@ function RightBar() {
         width: drawerWidth,
         flexShrink: 0,
         transition: "width 0.5s linear",
-
+         position:"inherit",
         "& .MuiDrawer-paper": {
           width: drawerWidth,
           height: "85vh",

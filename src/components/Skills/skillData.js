@@ -111,7 +111,7 @@ export const skills = [
   },
   {
     id: 11,
-    title: "Docker",
+    title: "Mongo DB",
     isCoreSkill: false,
     ratePercent: 90,
     description:
@@ -122,7 +122,51 @@ export const skills = [
   },
   {
     id: 12,
+    title: "MySql",
+    isCoreSkill: false,
+    ratePercent: 90,
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse commodi deserunt vitae, vero quasi! Veniam quaerat tenetur pariatur doloribus.",
+    createdAt: "2023-10-31T06:41:05.000Z",
+    updatedAt: "2023-10-31T06:41:05.000Z",
+    userName: "arslan_qadir",
+  },
+  {
+    id: 13,
+    title: "Docker",
+    isCoreSkill: false,
+    ratePercent: 90,
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse commodi deserunt vitae, vero quasi! Veniam quaerat tenetur pariatur doloribus.",
+    createdAt: "2023-10-31T06:40:58.000Z",
+    updatedAt: "2023-10-31T06:40:58.000Z",
+    userName: "arslan_qadir",
+  },
+  {
+    id: 14,
     title: "Git",
+    isCoreSkill: false,
+    ratePercent: 90,
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse commodi deserunt vitae, vero quasi! Veniam quaerat tenetur pariatur doloribus.",
+    createdAt: "2023-10-31T06:41:05.000Z",
+    updatedAt: "2023-10-31T06:41:05.000Z",
+    userName: "arslan_qadir",
+  },
+  {
+    id: 15,
+    title: "Socket.io",
+    isCoreSkill: false,
+    ratePercent: 90,
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse commodi deserunt vitae, vero quasi! Veniam quaerat tenetur pariatur doloribus.",
+    createdAt: "2023-10-31T06:40:58.000Z",
+    updatedAt: "2023-10-31T06:40:58.000Z",
+    userName: "arslan_qadir",
+  },
+  {
+    id: 16,
+    title: "Firebase",
     isCoreSkill: false,
     ratePercent: 90,
     description:

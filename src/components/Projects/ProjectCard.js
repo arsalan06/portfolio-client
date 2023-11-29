@@ -29,11 +29,12 @@ function ProjectCard({ data }) {
         )}
       </Box>
       <Box className={styles.secondaryBox}>
-        <Typography variant="section_subheading">Web Development</Typography>
+        <Typography variant="section_subheading">
+          {data?.projectName}
+        </Typography>
         <br />
         <Typography variant="body_text" sx={marginTopClass}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-          esse commodi deserunt vitae.
+          {data?.projectDescription}
         </Typography>
         <Link href={`/projectdetail/${data.id}`}>
           <Typography variant="order_text" sx={orderText}>

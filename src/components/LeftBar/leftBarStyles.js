@@ -57,6 +57,7 @@ export const mainContainer = {
 export const innerContainer = {
   width: "80%",
   marginTop: "10px",
+  marginBottom: "30px",
   overflowY: "scroll",
   "&::-webkit-scrollbar": {
     display: "none",
@@ -112,6 +113,8 @@ export const footer = {
   justifyContent: "center",
   gap: 2,
   padding: "15px 0px",
+  position:"absolute",
+  bottom:"0px"
 };
 
 export const socialIcons = {

@@ -87,10 +87,10 @@ body {
 
 body {
   background-color: #191923;
-  padding: 0px 40px;
+  /* padding: 0px 40px; */
 }
 .container {
-  height: 94vh;
+  height: 94dvh;
    background-image:
    linear-gradient(
       0deg,

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Avatar, Box, Divider, Typography } from "@mui/material";
+import { Avatar, Box, Divider, Drawer, Typography } from "@mui/material";
 import {
   DividerLine,
   StyledBadge,
@@ -15,6 +15,7 @@ import {
   BorderLinearProgress,
 } from "./leftBarStyles";
 import "react-circular-progressbar/dist/styles.css";
+import { IoMdClose } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
 import {
   AiFillGithub,
@@ -22,14 +23,25 @@ import {
   AiOutlineTwitter,
   AiOutlineWhatsApp,
 } from "react-icons/ai";
-import { useSelector } from "@/redux/store";
 import { CircularProgressbar } from "react-circular-progressbar";
-import Link from "next/link";
-import { base_url } from "@/constant/constant";
 import { skills } from "../Skills/skillData";
-const LeftBar = ({ drawerWidth }) => {
-  const userDetail = useSelector((state) => state.userDetailReducer);
-  const skillsData = useSelector((state) => state.skillsReducer);
+import { styled, useTheme } from "@mui/material/styles";
+const drawerWidth = 280;
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-end",
+  backgroundColor: "#20202A",
+  flexDirection: "column",
+}));
+
+export default function LeftDrawer({ OpenLeftDrawer, open }) {
+  const theme = useTheme();
   const [skillArray, setSkillArray] = useState();
   useEffect(() => {
     if (skills?.length > 0) {
@@ -49,28 +61,60 @@ const LeftBar = ({ drawerWidth }) => {
       }
       setSkillArray(newTempArray);
     }
-  }, [skillsData?.skillsData]);
+  }, [skills]);
+
+  const handleDrawerClose = () => {
+    OpenLeftDrawer(false);
+  };
+
   return (
-    <Box
+    <Drawer
       sx={{
-        width: drawerWidth,
-        ...mainContainer,
+        width: open && drawerWidth,
+        flexShrink: 0,
+        "& .MuiDrawer-paper": {
+          width: drawerWidth,
+          boxSizing: "border-box",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          backgroundColor: "#20202A",
+        },
       }}
+      variant="temporary"
+      anchor="left"
+      open={open}
     >
-      <Box sx={header}>
-        <StyledBadge
-          overlap="circular"
-          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-          variant="dot"
+      <DrawerHeader>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            width: "100%",
+            mt:1
+          }}
         >
-          <Avatar
-            src="/images/avatar.jpg"
-            sx={{ width: "70px", height: "70px" }}
-          ></Avatar>
-        </StyledBadge>
-        <Typography variant="page_title">Muhammad Arsalan Qadir</Typography>
-        <Typography variant="body_text">Mern Stack Developer</Typography>
-      </Box>
+          <IoMdClose
+            onClick={handleDrawerClose}
+            style={{ color: "#8C8C8E", cursor: "pointer", fontSize: "28px" }}
+          />
+        </Box>
+        <Box sx={header}>
+          <StyledBadge
+            overlap="circular"
+            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            variant="dot"
+          >
+            <Avatar
+              src="/images/avatar.jpg"
+              sx={{ width: "70px", height: "70px" }}
+            ></Avatar>
+          </StyledBadge>
+          <Typography variant="page_title">Muhammad Arsalan Qadir</Typography>
+          <Typography variant="body_text">Mern Stack Developer</Typography>
+        </Box>
+      </DrawerHeader>
       <Box sx={{ ...innerContainer }}>
         <Box sx={stackBox}>
           <Typography variant="page_title" sx={labelText}>
@@ -138,15 +182,13 @@ const LeftBar = ({ drawerWidth }) => {
       </Box>
       <Box sx={footer}>
         {/* <Link href={`${linkObj?.linkedIn}`} target="_blank"> */}
-          <AiFillLinkedin style={{ ...socialIcons }} />
+        <AiFillLinkedin style={{ ...socialIcons }} />
         {/* </Link> */}
 
         <AiFillGithub style={socialIcons} />
         <AiOutlineTwitter style={socialIcons} />
         <AiOutlineWhatsApp style={socialIcons} />
       </Box>
-    </Box>
+    </Drawer>
   );
-};
-
-export default LeftBar;
+}

@@ -17,7 +17,11 @@ import { SwiperNavButtons } from "../SwiperNavButtons";
 import { Rating } from "react-simple-star-rating";
 import ImgsViewer from "react-images-viewer";
 import { projects } from "@/components/Projects/projectData";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 function ProjectDetail({ params }) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
   const [projectData, setProjectData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [currImg, setCurrImg] = useState(0);
@@ -28,7 +32,7 @@ function ProjectDetail({ params }) {
   return (
     <Box
       sx={{
-        padding: "10px 25px",
+        padding: "10px 10px",
       }}
     >
       {projectData?.length > 0 && (
@@ -45,7 +49,7 @@ function ProjectDetail({ params }) {
         }}
       >
         <Swiper
-          slidesPerView={2}
+          slidesPerView={matches ? 1 : 2}
           spaceBetween={35}
           autoplay={{
             delay: 2500,
@@ -55,7 +59,7 @@ function ProjectDetail({ params }) {
           modules={[Autoplay, Navigation, Pagination]}
           className="mySwiper"
           style={{
-            width: "65vw",
+            width: matches ?"90vw":"70vw",
             height: "300px",
           }}
         >

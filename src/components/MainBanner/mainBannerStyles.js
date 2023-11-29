@@ -1,12 +1,11 @@
 export const mainContainer = {
   width: "95%",
   minHeight: "300px",
-  height: "300px",
-  // maxHeight: "400px",
-  //   border: "1px solid black",
   marginTop: "50px",
-  //   boxShadow: "inset 0 0 0 2000px rgb(36, 36, 46, 0.7)",
-  // boxShadow: "inset 0 0 0 200px rgba(44, 44, 56, 0.8)",
+  // padding:"10px 10px",
+  display: "flex",
+  // justifyContent: "space-between",
+  alignItems: "center",
   boxShadow: "-151px 121px 115px 110px rgba(41,41,53,0.61) inset",
 };
 
@@ -44,5 +43,6 @@ export const exploreButton = {
     marginTop: "30px",
     backgroundColor: "#ffc107",
     color: "black",
+    width: { xs: "60%", md: "10%", lg: "30%" },
   },
 };

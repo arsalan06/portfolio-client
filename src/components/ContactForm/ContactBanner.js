@@ -12,6 +12,7 @@ function ContactBanner() {
         backgroundSize: "100%",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
+        textAlign:"center"
       }}
     >
       <Typography sx={mainTitle}>Ready to order your project?</Typography>

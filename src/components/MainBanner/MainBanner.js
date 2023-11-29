@@ -10,10 +10,12 @@ import {
   typewriterText,
 } from "./mainBannerStyles";
 import Image from "next/image";
-import { useDispatch } from "@/redux/store";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { useRouter } from "next/navigation";
 const MainBanner = ({ userName }) => {
-  const dispatch = useDispatch();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
 
@@ -35,13 +37,17 @@ const MainBanner = ({ userName }) => {
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            // alignItems:"center"
-            padding: "20px 30px",
+            padding: "0px 30px",
+            alignItems:"center"
           }}
         >
           <Box
             sx={{
-              width: "55%",
+              width: {xs:"100%", sm: "100%", md:"80%",lg:"55%"},
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              height:"100%"
             }}
           >
             <Typography sx={mainTitle}>
@@ -74,18 +80,19 @@ const MainBanner = ({ userName }) => {
           </Box>
           <Box
             sx={{
-              width: "28%",
+              width: "30%",
+              display: matches && "none",
             }}
           >
             <Image
               src="/images/profile2.png"
               width={270}
-              height={330}
+              height={350}
               alt="Picture of the author"
-              style={{
-                position: "relative",
-                top: -50,
-              }}
+              // style={{
+              //   position: "relative",
+              //   top: -50,
+              // }}
             />
           </Box>
         </Box>

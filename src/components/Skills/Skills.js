@@ -14,8 +14,8 @@ function Skills() {
   return (
     isClient && (
       <Box sx={mainContainer}>
-        <Grid container spacing={3}>
-          <Grid item md={12} lg={12}>
+        <Grid container spacing={4}>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
             <Typography variant="section_heading">My Services</Typography>
           </Grid>
           {skills?.map((skill) => (
