@@ -3,16 +3,7 @@ import MainBanner from "@/components/MainBanner/MainBanner";
 import Skills from "@/components/Skills/Skills";
 import TotalProjectBanner from "@/components/TotalProjectBanner/TotalProjectBanner";
 import { Box } from "@mui/material";
-import React, { useEffect, useState } from "react";
-function Home({ params }) {
-  const [userName, setUserName] = useState("");
-  useEffect(() => {
-    if (params.name !== undefined) {
-      localStorage.setItem("userName", params.name);
-    } else {
-      setUserName(localStorage.getItem("userName"));
-    }
-  }, [params.name]);
+function Home() {
   return (
     <Box
       sx={{
@@ -22,9 +13,9 @@ function Home({ params }) {
         alignItems: "center",
       }}
     >
-      <MainBanner userName={userName} />
+      <MainBanner />
       <TotalProjectBanner />
-      <Skills userName={userName} />
+      <Skills />
     </Box>
   );
 }

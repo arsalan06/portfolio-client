@@ -1,8 +1,5 @@
 export const mainContainer = {
   width: "95%",
-  // display: "flex",
-  // justifyContent: "space-between",
-  // alignItems: "center",
   display: "grid",
   gridTemplateColumns: {
     xs: "repeat(2, 1fr)",
