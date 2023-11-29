@@ -1,15 +1,18 @@
 "use client";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
-import Login from "@/components/Login/Login";
+
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
   const router = useRouter();
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        {router.push("/home/arslans")}
-        {/* <Login/> */}
+        {isClient && router.push("/home/arslans")}
       </div>
     </main>
   );
