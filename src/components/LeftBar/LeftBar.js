@@ -64,8 +64,9 @@ const LeftBar = ({ drawerWidth }) => {
           variant="dot"
         >
           <Avatar
-            src="/images/avatar.jpg"
-            sx={{ width: "70px", height: "70px" }}
+          sizes="small"
+            src="/images/profile-one.png"
+            sx={{ width: "70px", height: "70px", objectFit: "cover" }}
           ></Avatar>
         </StyledBadge>
         <Typography variant="page_title">Muhammad Arsalan Qadir</Typography>
@@ -138,7 +139,7 @@ const LeftBar = ({ drawerWidth }) => {
       </Box>
       <Box sx={footer}>
         {/* <Link href={`${linkObj?.linkedIn}`} target="_blank"> */}
-          <AiFillLinkedin style={{ ...socialIcons }} />
+        <AiFillLinkedin style={{ ...socialIcons }} />
         {/* </Link> */}
 
         <AiFillGithub style={socialIcons} />

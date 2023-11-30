@@ -107,7 +107,7 @@ export default function LeftDrawer({ OpenLeftDrawer, open }) {
             variant="dot"
           >
             <Avatar
-              src="/images/avatar.jpg"
+              src="/images/profile-img.jpg"
               sx={{ width: "70px", height: "70px" }}
             ></Avatar>
           </StyledBadge>

@@ -18,7 +18,6 @@ export const orderText = {
     alignItems: "center",
     cursor: "pointer",
     transition: "gap 1s ease",
-    marginTop: "10px",
     "&.MuiTypography-root:hover": {
       gap: 1,
     },

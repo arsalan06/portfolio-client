@@ -86,6 +86,8 @@ const MainBanner = ({ userName }) => {
           >
             <Image
               src="/images/profile2.png"
+              // src="/images/profile-img.png"
+              
               width={270}
               height={350}
               alt="Picture of the author"

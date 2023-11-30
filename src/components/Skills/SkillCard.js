@@ -4,6 +4,7 @@ import React from "react";
 import { marginTopClass, orderText, skillCardContainer } from "./skillsStyles";
 import { BiChevronRight } from "react-icons/bi";
 import { useRouter } from "next/navigation";
+import ReactShowMoreText from "react-show-more-text";
 function SkillCard({ skill }) {
   const router = useRouter();
   return (
@@ -11,7 +12,19 @@ function SkillCard({ skill }) {
       <Typography variant="section_subheading">{skill?.title}</Typography>
       <br />
       <Typography variant="body_text" sx={marginTopClass}>
-        {skill?.description}
+        <ReactShowMoreText
+          /* Default options */
+          lines={4}
+          more="Show more"
+          less="...Show less"
+          anchorClass="oooeeer"
+          // onClick={this.executeOnClick}
+          className="skillText"
+          expanded={false}
+          width={0}
+        >
+          {skill?.description}
+        </ReactShowMoreText>
       </Typography>
       <br />
       <Typography

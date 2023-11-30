@@ -91,13 +91,12 @@ body {
 }
 .container {
   height: 94dvh;
-   background-image:
-   linear-gradient(
+  background-image: linear-gradient(
       0deg,
       #1e1e28 20%,
       rgba(21, 21, 21, 0.273) 200%
     ),
-    url("/images/background2.jpg"); 
+    url("/images/background2.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -126,7 +125,6 @@ body::-webkit-scrollbar {
   fill: white !important;
 }
 
-
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -142,7 +140,7 @@ body::-webkit-scrollbar {
   height: 100%;
   object-fit: cover;
 }
-.swiper-pagination{
+.swiper-pagination {
   position: relative !important;
   width: auto !important;
   top: 20px;
@@ -159,7 +157,7 @@ body::-webkit-scrollbar {
   font-size: 14px;
   color: #000;
   opacity: 1;
-  background: #55555B !important;
+  background: #55555b !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,9 +169,8 @@ body::-webkit-scrollbar {
 
 .swiper-pagination-bullet-active {
   color: #fff;
-  background: #FFC107 !important;
+  background: #ffc107 !important;
 }
-
 
 .swiper {
   padding: 2rem !important;
@@ -186,7 +183,7 @@ body::-webkit-scrollbar {
   border: 2px solid hsl(210, 100%, 50%) !important;
   border-radius: 20px !important;
 }
-.swiper-pagination-bullet{
+.swiper-pagination-bullet {
   margin: 0px !important;
   border-radius: 25% !important;
 }
@@ -195,12 +192,12 @@ body::-webkit-scrollbar {
   height: 300px;
   border: 2px solid black;
   margin: 70px 0px 0px 20%;
-  border-radius:5px;
-  float:left;
+  border-radius: 5px;
+  float: left;
 }
-.customVideoTagClass video{
-  height:inherit;
-  width:inherit;
+.customVideoTagClass video {
+  height: inherit;
+  width: inherit;
 }
 
 .customVideoTagControlsClass {
@@ -211,15 +208,28 @@ body::-webkit-scrollbar {
   border-radius: 5px;
   float: left;
 }
-  .customVideoTagControlsClass button{
-      border:1px solid orange;
-      border-radius:2px;
-      padding:5px;
-      margin:10px 0px 1px 15px;
-      width:70px;
-      background-color:coral;
-      cursor:pointer;
-  }
-  .customVideoTagControlsClass input[type=range] {
-      width: 377px;
-  }
+.customVideoTagControlsClass button {
+  border: 1px solid orange;
+  border-radius: 2px;
+  padding: 5px;
+  margin: 10px 0px 1px 15px;
+  width: 70px;
+  background-color: coral;
+  cursor: pointer;
+}
+.customVideoTagControlsClass input[type="range"] {
+  width: 377px;
+}
+
+.oooeeer {
+  color: #FFC107 !important;
+  cursor: pointer !important;
+  text-decoration: underline !important;
+  font-family: "Poppins" !important;
+  font-size: 14px !important;
+}
+
+.skillText{
+  text-align: start !important;
+  text-justify: inter-character !important;
+}

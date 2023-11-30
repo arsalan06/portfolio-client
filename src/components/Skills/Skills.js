@@ -7,6 +7,7 @@ import { skills } from "./skillData";
 
 function Skills() {
   const [isClient, setIsClient] = useState(false);
+  const [collapseId, setCollapseId] = useState();
 
   useEffect(() => {
     setIsClient(true);
