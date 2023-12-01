@@ -2,8 +2,8 @@ export const projects = [
   {
     id: 1,
     projectName: "R8tr App",
-    startDate: "12-8-2021",
-    endDate: "12-10-2023",
+    startDate: "12-8-2023",
+    endDate: "22-10-2023",
     status: "Completed",
     projectTech: ["React JS", "Redux", "Mui", "Socket", "Firebase"],
     projectDescription:
@@ -44,7 +44,7 @@ export const projects = [
     id: 3,
     projectName: "Workbay Pro",
     startDate: "12-8-2021",
-    endDate: "12-10-2023",
+    endDate: "12-5-2023",
     status: "Completed",
     projectTech: ["React JS", "Redux", "Mui", "Socket", "Firebase"],
     projectDescription:
@@ -117,8 +117,8 @@ export const projects = [
   {
     id: 4,
     projectName: "R8tr Portal",
-    startDate: "12-8-2021",
-    endDate: "12-10-2023",
+    startDate: "12-9-2022",
+    endDate: "12-11-2023",
     status: "Completed",
     projectTech: ["React JS", "Redux", "Mui", "Socket", "Firebase"],
     projectDescription:
@@ -156,8 +156,8 @@ export const projects = [
   {
     id: 5,
     projectName: "Template",
-    startDate: "12-8-2021",
-    endDate: "12-10-2023",
+    startDate: "12-8-2023",
+    endDate: "12-8-2023",
     status: "Completed",
     projectTech: ["React JS", "Redux", "Mui", "Socket", "Firebase"],
     projectDescription:
@@ -190,8 +190,8 @@ export const projects = [
   {
     id: 6,
     projectName: "Real Estate",
-    startDate: "12-8-2021",
-    endDate: "12-10-2023",
+    startDate: "2-4-2021",
+    endDate: "16-7-2021",
     status: "Completed",
     projectTech: ["React JS", "Redux", "Mui", "Socket", "Firebase"],
     projectDescription:
