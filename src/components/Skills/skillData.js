@@ -3,7 +3,7 @@ export const skills = [
     id: 1,
     title: "HTML",
     isCoreSkill: true,
-    ratePercent: 90,
+    ratePercent: 80,
     description:
       "With three years of dedicated experience, I have honed my HTML skills to perfection. Proficient in crafting clean and semantically structured code, I excel at building responsive and visually appealing web pages. My keen attention to detail ensures seamless user experiences, making me a valuable asset for any web development project.",
     text: "new text",
@@ -15,7 +15,7 @@ export const skills = [
     id: 2,
     title: "CSS",
     isCoreSkill: true,
-    ratePercent: 90,
+    ratePercent: 80,
     description:
       "With three years of expertise in CSS, I bring a creative flair to web design. Proficient in implementing responsive layouts and dynamic styling, I excel at transforming concepts into visually stunning interfaces. My adept use of CSS frameworks and animations enhances user engagement, making me a versatile and accomplished front-end developer.",
     createdAt: "2023-10-31T06:37:07.000Z",
@@ -26,7 +26,7 @@ export const skills = [
     id: 3,
     title: "React JS",
     isCoreSkill: true,
-    ratePercent: 90,
+    ratePercent: 85,
     description:
       "Marking 2+ years of proficiency in React.js, I have demonstrated my ability to create robust and interactive user interfaces. Leveraging state management, component lifecycle, and JSX syntax, I excel in developing scalable and efficient React applications. With a keen eye for optimizing performance and implementing best practices, I bring a valuable skill set to the dynamic world of front-end development.",
     createdAt: "2023-10-31T06:37:27.000Z",
@@ -37,7 +37,7 @@ export const skills = [
     id: 4,
     title: "Next JS",
     isCoreSkill: true,
-    ratePercent: 90,
+    ratePercent: 70,
     description:
       "Marking one year of mastery in Next.js, I have successfully navigated the intricacies of server-side rendering and routing. My expertise lies in creating high-performance and SEO-friendly React applications, leveraging Next.js's powerful capabilities. With a focus on code splitting and dynamic imports, I ensure optimal loading times, making me a skilled Next.js developer for building modern, efficient web applications.",
     createdAt: "2023-10-31T06:37:37.000Z",
@@ -59,7 +59,7 @@ export const skills = [
     id: 6,
     title: "JavaScript",
     isCoreSkill: true,
-    ratePercent: 90,
+    ratePercent: 80,
     description:
       "Marking 3 years of proficiency in,I've cultivated a deep understanding of the language's core concepts and modern features. From manipulating the DOM to asynchronous operations using promises and async/await, I bring versatility to web development. With expertise in ES6 and beyond, I excel in crafting clean, modular, and efficient code, making me a well-rounded JavaScript developer poised for diverse projects",
     createdAt: "2023-10-31T06:38:22.000Z",
@@ -70,7 +70,7 @@ export const skills = [
     id: 7,
     title: "Material UI",
     isCoreSkill: false,
-    ratePercent: 90,
+    ratePercent: 80,
     description:
       "With 2 years of experience in MaterialUI,I have mastered the art of creating sleek and responsive user interfaces. Proficient in utilizing Material Design principles, I excel in designing cohesive and visually appealing components for React applications. My expertise includes theming, customization, and seamless integration of Material-UI to ensure a consistent and polished look, making me a skilled developer for crafting modern and user-friendly interfaces.",
     createdAt: "2023-10-31T06:38:47.000Z",
@@ -81,7 +81,7 @@ export const skills = [
     id: 8,
     title: "And Design",
     isCoreSkill: false,
-    ratePercent: 90,
+    ratePercent: 70,
     description:
       "With 2 years of experience in And Design,I have mastered the art of creating sleek and responsive user interfaces. Proficient in utilizing Material Design principles, I excel in designing cohesive and visually appealing components for React applications. My expertise includes theming, customization, and seamless integration of Material-UI to ensure a consistent and polished look, making me a skilled developer for crafting modern and user-friendly interfaces.",
     createdAt: "2023-10-31T06:39:01.000Z",
@@ -92,7 +92,7 @@ export const skills = [
     id: 9,
     title: "Bootstrap",
     isCoreSkill: false,
-    ratePercent: 90,
+    ratePercent: 80,
     description:
       "With 3 year of hands-on experience in Bootstrap, I've become proficient in leveraging its powerful framework to create responsive and visually appealing websites. My expertise extends to utilizing Bootstrap's grid system, components, and utilities for efficient and consistent web development. Whether crafting mobile-friendly interfaces or optimizing layouts for different devices, I excel in utilizing Bootstrap to streamline the front-end development process, making me a skilled Bootstrap developer ready to enhance user experiences.",
     createdAt: "2023-10-31T06:39:14.000Z",
@@ -103,7 +103,7 @@ export const skills = [
     id: 10,
     title: "Tailwind CSS",
     isCoreSkill: false,
-    ratePercent: 90,
+    ratePercent: 70,
     description:
       "With 2 year of hands-on experience in Tailwind CSS,I've mastered the art of utility-first styling, offering a unique approach to crafting modern and responsive interfaces. Proficient in leveraging the extensive utility classes provided by Tailwind, I excel in creating flexible and customizable designs with efficiency. My skills encompass rapid prototyping, responsive layout implementation, and maintaining a consistent design system, making me a valuable Tailwind CSS developer poised to enhance the aesthetics and functionality of web applications.",
     createdAt: "2023-10-31T06:40:41.000Z",
@@ -114,7 +114,7 @@ export const skills = [
     id: 11,
     title: "Mongo DB",
     isCoreSkill: false,
-    ratePercent: 90,
+    ratePercent: 70,
     description:
       "After a year of immersion in MongoDB,I've developed proficiency in crafting robust and scalable database solutions. My expertise includes designing efficient NoSQL data models, utilizing the flexibility of BSON documents, and implementing complex queries. With a focus on indexing and aggregation pipelines, I ensure optimal performance for MongoDB databases. Whether working on CRUD operations or schema design, I bring a comprehensive skill set to database development, making me a reliable MongoDB developer for diverse projects.",
     createdAt: "2023-10-31T06:40:58.000Z",
@@ -125,7 +125,7 @@ export const skills = [
     id: 12,
     title: "MySql",
     isCoreSkill: false,
-    ratePercent: 90,
+    ratePercent: 70,
     description:
       "With one year of expertise in MySQL, I've honed my skills in designing and managing relational databases. Proficient in crafting efficient queries, optimizing database performance, and ensuring data integrity, I bring a meticulous approach to MySQL development. My experience includes schema design, normalization, and implementation of complex joins, making me adept at creating scalable and well-structured database solutions. Whether it's CRUD operations or database optimization, I am a skilled MySQL developer ready to contribute to robust and reliable data management systems.",
     createdAt: "2023-10-31T06:41:05.000Z",
@@ -136,7 +136,7 @@ export const skills = [
     id: 13,
     title: "Docker",
     isCoreSkill: false,
-    ratePercent: 90,
+    ratePercent: 60,
     description:
       "With a year of hands-on experience in Docker, I've mastered containerization for seamless application deployment and management. Proficient in creating Dockerfiles, orchestrating multi-container setups, and utilizing Docker Compose, I excel in building and optimizing development environments. My expertise extends to container networking, volume management, and Docker Swarm for scalable solutions. As a seasoned Docker developer, I bring efficiency and consistency to the deployment process, making me adept at containerizing applications for various environments.",
     createdAt: "2023-10-31T06:40:58.000Z",
@@ -147,7 +147,7 @@ export const skills = [
     id: 14,
     title: "Git",
     isCoreSkill: false,
-    ratePercent: 90,
+    ratePercent: 80,
     description:
       "Making 2+ years of proficiency in Git,I've demonstrated expertise in version control and collaborative software development. Proficient in branching strategies, pull requests, and conflict resolution, I excel in maintaining clean and organized repositories. My skills encompass Git workflows, tagging, and integrating Git into CI/CD pipelines, ensuring efficient collaboration and code deployment. As a skilled Git user, I bring a disciplined approach to source code management, making me a reliable contributor to collaborative software projects.",
     createdAt: "2023-10-31T06:41:05.000Z",
@@ -158,7 +158,7 @@ export const skills = [
     id: 15,
     title: "Socket.io",
     isCoreSkill: false,
-    ratePercent: 90,
+    ratePercent: 80,
     description:
       "After a year of dedicated experience with Socket.io, I've become adept at building real-time, bidirectional communication in web applications. Proficient in implementing WebSocket-based solutions, I excel in creating responsive and interactive features. My expertise includes handling events, broadcasting messages, and ensuring seamless connectivity between clients and servers. As a skilled Socket.io developer, I bring a deep understanding of real-time communication patterns, making me well-suited for building dynamic and engaging web applications that require instant updates and interactivity.",
     createdAt: "2023-10-31T06:40:58.000Z",
@@ -169,7 +169,7 @@ export const skills = [
     id: 16,
     title: "Firebase",
     isCoreSkill: false,
-    ratePercent: 90,
+    ratePercent: 60,
     description:
       "With one year of Firebase expertise, I have honed my skills in leveraging this comprehensive platform for building seamless and scalable applications. Proficient in Firestore for NoSQL database solutions, Firebase Authentication for secure user management, and Firebase Cloud Functions for serverless architecture, I excel in crafting robust and efficient backends. My experience extends to utilizing Firebase Hosting and Cloud Storage for streamlined deployment and storage solutions. As a skilled Firebase developer, I bring a holistic understanding of the platform, making me well-suited for developing modern and feature-rich applications.",
     createdAt: "2023-10-31T06:41:05.000Z",
