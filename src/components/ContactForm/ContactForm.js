@@ -1,5 +1,6 @@
 "use client";
 import {
+  Alert,
   Box,
   Button,
   Card,
@@ -36,15 +37,15 @@ function ContactForm() {
   } = useForm();
   const handleRequesSubmit = (data) => {
     setLoading(true);
-    axios
-      .post(`${api_base_url}sendEmail`, data)
-      .then((res) => {
-        setLoading(false);
-        setSuccess(true);
-      })
-      .catch((err) => {
-        setLoading(false);
-      });
+    // axios
+    //   .post(`${api_base_url}sendEmail`, data)
+    //   .then((res) => {
+    //     setLoading(false);
+    //     setSuccess(true);
+    //   })
+    //   .catch((err) => {
+    //     setLoading(false);
+    //   });
   };
   return (
     <Box
@@ -54,6 +55,7 @@ function ContactForm() {
         mb: 4,
       }}
     >
+  
       <Grid container spacing={2}>
         <Grid item md={12} lg={12}>
           <Typography variant="section_heading">Contact information</Typography>
@@ -64,25 +66,19 @@ function ContactForm() {
               <Typography variant="page_title" sx={labelText}>
                 Residence:
               </Typography>
-              <Typography variant="body_text">
-                {userDetail?.userDetail?.user?.country}
-              </Typography>
+              <Typography variant="body_text">Pakistan</Typography>
             </Box>
             <Box sx={stackBox}>
               <Typography variant="page_title" sx={labelText}>
                 City:
               </Typography>
-              <Typography variant="body_text">
-                {userDetail?.userDetail?.user?.city}
-              </Typography>
+              <Typography variant="body_text">Lahore</Typography>
             </Box>
             <Box sx={stackBox}>
               <Typography variant="page_title" sx={labelText}>
                 State:
               </Typography>
-              <Typography variant="body_text">
-                {userDetail?.userDetail?.user?.state}
-              </Typography>
+              <Typography variant="body_text">Punjab</Typography>
             </Box>
           </Card>
         </Grid>
@@ -93,23 +89,21 @@ function ContactForm() {
                 Email:
               </Typography>
               <Typography variant="body_text">
-                {userDetail?.userDetail?.user?.email}
+                marslanqadir06@gmail.com
               </Typography>
             </Box>
             <Box sx={stackBox}>
               <Typography variant="page_title" sx={labelText}>
                 Telegram:
               </Typography>
-              <Typography variant="body_text">
-                {userDetail?.userDetail?.user?.telegram}
-              </Typography>
+              <Typography variant="body_text">arslanqadir06</Typography>
             </Box>
             <Box sx={stackBox}>
               <Typography variant="page_title" sx={labelText}>
                 Skype:
               </Typography>
               <Typography variant="body_text">
-                {userDetail?.userDetail?.user?.skype}
+                Muhammad Arsalan Qadir
               </Typography>
             </Box>
           </Card>
@@ -121,24 +115,20 @@ function ContactForm() {
                 Name:
               </Typography>
               <Typography variant="body_text">
-                {userDetail?.userDetail?.user?.fullName}
+                Muhammad Arsalan Qadir
               </Typography>
             </Box>
             <Box sx={stackBox}>
               <Typography variant="page_title" sx={labelText}>
                 Phone Number:
               </Typography>
-              <Typography variant="body_text">
-                {userDetail?.userDetail?.user?.phoneNumber}
-              </Typography>
+              <Typography variant="body_text">+923168086871</Typography>
             </Box>
             <Box sx={stackBox}>
               <Typography variant="page_title" sx={labelText}>
                 Age:
               </Typography>
-              <Typography variant="body_text">
-                {userDetail?.userDetail?.user?.age}
-              </Typography>
+              <Typography variant="body_text">26</Typography>
             </Box>
           </Card>
         </Grid>
@@ -169,10 +159,7 @@ function ContactForm() {
                 //   required: true,
                 // })}
               />
-              {errors.name && (
-                <Typography variant="body_error">
-                 S</Typography>
-              )}
+              {errors.name && <Typography variant="body_error">S</Typography>}
               <TextField
                 sx={{ ...textField, mt: 4 }}
                 placeholder="Email"
@@ -230,6 +217,12 @@ function ContactForm() {
           </form>
         </Grid>
       </Grid>
+      {loading && (
+        <Alert severity="info">
+          Sorry contact form functionality is not working yet. you can contact
+          me through email!
+        </Alert>
+      )}
     </Box>
   );
 }

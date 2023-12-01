@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        {isClient && router.push("/home/arslans")}
+        {isClient && router.push("/home/arslan")}
       </div>
     </main>
   );

@@ -51,10 +51,10 @@ function RightBar() {
       title: "Portfolio",
       path: "/portfolio",
     },
-    {
-      title: "Skill",
-      path: "/skill",
-    },
+    // {
+    //   title: "Skill",
+    //   path: "/skill",
+    // },
     {
       title: "Contact",
       path: "/contact",
