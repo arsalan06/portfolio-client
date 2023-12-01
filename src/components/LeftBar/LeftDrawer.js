@@ -86,13 +86,15 @@ export default function LeftDrawer({ OpenLeftDrawer, open }) {
       open={open}
     >
       <DrawerHeader>
+       
+        <Box sx={header}>
         <Box
           sx={{
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
             width: "100%",
-            mt:1
+            // mt:2
           }}
         >
           <IoMdClose
@@ -100,14 +102,13 @@ export default function LeftDrawer({ OpenLeftDrawer, open }) {
             style={{ color: "#8C8C8E", cursor: "pointer", fontSize: "28px" }}
           />
         </Box>
-        <Box sx={header}>
           <StyledBadge
             overlap="circular"
             anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
             variant="dot"
           >
             <Avatar
-              src="/images/profile-img.jpg"
+              src="/images/profile-three.png"
               sx={{ width: "70px", height: "70px" }}
             ></Avatar>
           </StyledBadge>

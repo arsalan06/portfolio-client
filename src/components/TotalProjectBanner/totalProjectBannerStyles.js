@@ -8,11 +8,13 @@ export const mainContainer = {
     lg: "repeat(4, 1fr)",
   },
   marginTop: "30px",
+  textAlign:"left",
+
 };
 
 export const flexDisplay = {
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "flex-start",
   alignItems: "center",
 };
 
@@ -21,7 +23,7 @@ export const valueText = {
     fontFamily: "Poppins",
     fontWeight: 500,
     color: "white",
-    fontSize: "14px",
+    fontSize: {xs:"12px", sm:"12px",md:"14px",lg:"14px"},
   },
 };
 export const numberText = {

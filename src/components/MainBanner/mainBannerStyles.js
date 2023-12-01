@@ -26,6 +26,9 @@ export const typewriterTage = {
     fontSize: "14px",
     display: "flex",
     marginTop: "20px",
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center",
   },
 };
 export const typewriterText = {

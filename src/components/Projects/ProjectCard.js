@@ -34,7 +34,7 @@ function ProjectCard({ data }) {
         </Typography>
         <br />
         <Typography variant="body_text" sx={marginTopClass}>
-          {data?.projectDescription}
+          {data?.projectDescription?.substring(0, 135)}...
         </Typography>
         <Link href={`/projectdetail/${data.id}`}>
           <Typography variant="order_text" sx={orderText}>

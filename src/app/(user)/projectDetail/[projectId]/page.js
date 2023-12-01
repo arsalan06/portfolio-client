@@ -19,6 +19,7 @@ import ImgsViewer from "react-images-viewer";
 import { projects } from "@/components/Projects/projectData";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ReactShowMoreText from "react-show-more-text";
 function ProjectDetail({ params }) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
@@ -35,11 +36,15 @@ function ProjectDetail({ params }) {
         padding: "10px 10px",
       }}
     >
+      <Grid container spacing={4} sx={{ mt: 1 }}>
+      <Grid item xs={12} sm={12} md={12} lg={12}>
       {projectData?.length > 0 && (
         <Typography variant="main_heading">
           {projectData[0]?.projectName}
         </Typography>
       )}
+      </Grid>
+      <Grid item xs={12} sm={12} md={12} lg={12}>
       <Box
         sx={{
           width: "100%",
@@ -59,7 +64,7 @@ function ProjectDetail({ params }) {
           modules={[Autoplay, Navigation, Pagination]}
           className="mySwiper"
           style={{
-            width: matches ?"90vw":"70vw",
+            width: matches ? "90vw" : "70vw",
             height: "300px",
           }}
         >
@@ -72,6 +77,7 @@ function ProjectDetail({ params }) {
                     objectFit="cover"
                     src={img.src}
                     alt="helo"
+                    style={{cursor:"pointer"}}
                     onClick={(e) => {
                       setIsOpen(true);
                       setCurrImg(index);
@@ -83,6 +89,7 @@ function ProjectDetail({ params }) {
           <SwiperNavButtons />
         </Swiper>
       </Box>
+      </Grid>
       {/* <Box sx={{ mt: 8 }}>
         <Typography variant="main_heading">Project video</Typography>
       </Box> */}
@@ -107,15 +114,26 @@ function ProjectDetail({ params }) {
           ></video>
         </Box>
       )} */}
-      <Grid container spacing={2} sx={{ mb: 8 }}>
-        <Grid item xs={12} sm={12} md={12} lg={12} sx={{ mt: 8 }}>
+        <Grid item xs={12} sm={12} md={12} lg={12} sx={{ mt: 8, pl:4, pr:4 }}>
           <Typography variant="main_heading">Project detail</Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={8} lg={8}>
           <Box sx={descriptionCard}>
             <Typography variant="section_subheading">Description</Typography>
             <Typography variant="body_text">
-              {projectData?.length > 0 && projectData[0]?.projectDescription}
+              <ReactShowMoreText
+                /* Default options */
+                lines={4}
+                more="Show more"
+                less="...Show less"
+                anchorClass="oooeeer"
+                // onClick={this.executeOnClick}
+                className="skillText"
+                expanded={false}
+                width={0}
+              >
+                {projectData?.length > 0 && projectData[0]?.projectDescription}
+              </ReactShowMoreText>
             </Typography>
           </Box>
         </Grid>
@@ -147,7 +165,7 @@ function ProjectDetail({ params }) {
             </Box>
           </Box>
         </Grid>
-      </Grid>
+      
       {/* <Typography
         variant="main_heading"
       >
@@ -230,12 +248,14 @@ function ProjectDetail({ params }) {
           <SwiperNavButtons />
         </Swiper>
       </Box> */}
-      <Box sx={{ mt: 8 }}>
+      <Grid item xs={12} sm={12} md={12} lg={12}>
         <TotalProjectBanner />
-      </Box>
+      </Grid>
+      <Grid item xs={12} sm={12} md={12} lg={12}>
       <Box>
         <ContactBanner />
       </Box>
+      </Grid>
       {isOpen && (
         <ImgsViewer
           imgs={projectData[0]?.Media?.projectImages}
@@ -248,6 +268,7 @@ function ProjectDetail({ params }) {
           onClose={(e) => setIsOpen(false)}
         />
       )}
+    </Grid>
     </Box>
   );
 }

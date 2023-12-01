@@ -65,7 +65,7 @@ const LeftBar = ({ drawerWidth }) => {
         >
           <Avatar
           sizes="small"
-            src="/images/profile-one.png"
+            src="/images/profile-three.png"
             sx={{ width: "70px", height: "70px", objectFit: "cover" }}
           ></Avatar>
         </StyledBadge>

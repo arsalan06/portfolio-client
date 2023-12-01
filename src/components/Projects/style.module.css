@@ -15,7 +15,7 @@
 .mainBox:hover > :nth-child(2) {
   background-color: #242430;
   transition: height 1s ease-in;
-  height: 150px;
+  height: 160px;
 }
 .secondaryBox > :nth-child(n) {
   opacity: 0;
