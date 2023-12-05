@@ -10,6 +10,7 @@
 .mainBox > :nth-child(6) {
   color: aliceblue;
   background-color: tomato;
+  /* transition: ease-in; */
 }
 
 .mainBox:hover > :nth-child(2) {

@@ -9,7 +9,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { AiOutlineClose } from "react-icons/ai";
 import { TfiMenu } from "react-icons/tfi";
-import { Typography } from "@mui/material";
+import { ClickAwayListener, Typography } from "@mui/material";
 import { activeLink, settingNavLink, urlText } from "./rightBarStyles";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -39,6 +39,9 @@ function RightBar() {
   const handCloseDrawer = () => {
     setDrawerWidth(80);
   };
+  const handleDrawerClose = () => {
+    setDrawerWidth(80);
+  };
   const handOpenDrawer = () => {
     setDrawerWidth(240);
   };
@@ -61,6 +64,7 @@ function RightBar() {
     },
   ];
   return (
+    <ClickAwayListener onClickAway={handleDrawerClose}>
     <Drawer
       // BackdropProps={{ invisible: true }}
       sx={{
@@ -83,6 +87,7 @@ function RightBar() {
       hideBackdrop={true}
       disableScrollLock
       disableEnforceFocus
+
     >
       <DrawerHeader>
         {drawerWidth === 240 ? (
@@ -131,6 +136,7 @@ function RightBar() {
         </Box>
       )}
     </Drawer>
+    </ClickAwayListener>
   );
 }
 

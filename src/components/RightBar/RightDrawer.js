@@ -9,13 +9,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { AiOutlineClose } from "react-icons/ai";
 import { TfiMenu } from "react-icons/tfi";
-import { Typography } from "@mui/material";
+import { ClickAwayListener, Typography } from "@mui/material";
 import { activeLink, settingNavLink, urlText } from "./rightBarStyles";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
 const DrawerHeader = styled("div")(({ theme }) => ({
-  width:"100%",
+  width: "100%",
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
@@ -73,7 +73,7 @@ export default function RightDrawer({ OpenRightDrawer, open }) {
       </DrawerHeader>
       {
         drawerWidth === 240 && (
-          <List sx={{width:"100%"}}>
+          <List sx={{ width: "100%" }}>
             {pagesArray.map((page, index) => (
               <ListItem key={index} disablePadding>
                 <Link

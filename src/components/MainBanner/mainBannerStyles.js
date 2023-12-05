@@ -1,6 +1,6 @@
 export const mainContainer = {
   width: "95%",
-  minHeight: "300px",
+  minHeight:  { xs: "350px", sm:"350px", md: "300px", lg: "300px" },
   marginTop: "50px",
   // padding:"10px 10px",
   display: "flex",

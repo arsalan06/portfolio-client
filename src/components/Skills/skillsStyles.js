@@ -9,6 +9,7 @@ export const skillCardContainer = {
   "&.MuiCard-root": {
     backgroundColor: "#242430",
     padding: "20px 20px",
+    minHeight:"100px"
   },
 };
 export const orderText = {

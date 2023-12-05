@@ -35,6 +35,8 @@ export const themeTemplate = createTheme({
       fontSize: "14px",
       color: "#8C8C8E",
       textAlign: "left",
+      textAlign:"justify"
+
       // marginTop: "5px",
     },
     white_text: {

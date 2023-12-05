@@ -64,7 +64,7 @@ const LeftBar = ({ drawerWidth }) => {
           variant="dot"
         >
           <Avatar
-          sizes="small"
+            sizes="small"
             src="/images/profile-three.png"
             sx={{ width: "70px", height: "70px", objectFit: "cover" }}
           ></Avatar>
@@ -138,13 +138,24 @@ const LeftBar = ({ drawerWidth }) => {
         ))}
       </Box>
       <Box sx={footer}>
-        {/* <Link href={`${linkObj?.linkedIn}`} target="_blank"> */}
-        <AiFillLinkedin style={{ ...socialIcons }} />
-        {/* </Link> */}
-
-        <AiFillGithub style={socialIcons} />
-        <AiOutlineTwitter style={socialIcons} />
-        <AiOutlineWhatsApp style={socialIcons} />
+        <Link
+          href="https://www.linkedin.com/in/muhammad-arsalan-qadir-928182160"
+          target="_blank"
+        >
+          <AiFillLinkedin style={{ ...socialIcons }} />
+        </Link>
+        <Link href="https://github.com/arsalan06" target="_blank">
+          <AiFillGithub style={socialIcons} />
+        </Link>
+        <Link
+          href="https://x.com/7103M?t=jeiU5CDwCOe001lJxiW45A&s=09"
+          target="_blank"
+        >
+          <AiOutlineTwitter style={socialIcons} />
+        </Link>
+        <Link href="https://wa.me/+923168086871" target="_blank">
+          <AiOutlineWhatsApp style={socialIcons} />
+        </Link>
       </Box>
     </Box>
   );

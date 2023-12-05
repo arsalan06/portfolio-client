@@ -8,13 +8,23 @@ export const mainContainer = {
     lg: "repeat(4, 1fr)",
   },
   marginTop: "30px",
-  textAlign:"left",
+  textAlign: {
+    xs: "center",
+    sm: "center",
+    md: "left",
+    lg: "left",
+  },
 
 };
 
 export const flexDisplay = {
   display: "flex",
-  justifyContent: "flex-start",
+  justifyContent:{
+    xs: "center",
+    sm: "center",
+    md: "flex-start",
+    lg: "flex-start",
+  } ,
   alignItems: "center",
 };
 
