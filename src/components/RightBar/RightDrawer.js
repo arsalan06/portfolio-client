@@ -35,10 +35,6 @@ const pagesArray = [
     path: "/portfolio",
   },
   {
-    title: "Skill",
-    path: "/skill",
-  },
-  {
     title: "Contact",
     path: "/contact",
   },

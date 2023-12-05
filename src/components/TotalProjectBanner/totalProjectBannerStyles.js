@@ -32,6 +32,6 @@ export const numberText = {
     fontWeight: 600,
     color: "#ffc107",
     fontSize: {xs:"16px", sm:"16px",md:"22px",lg:"22px"},
-    marginRight: {xs:"2px", sm:"2px",md:"15px",lg:"15px"},
+    marginRight: {xs:"2px", sm:"2px",md:"15px",lg:"8px"},
   },
 };

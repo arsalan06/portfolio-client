@@ -46,6 +46,6 @@ export const exploreButton = {
     marginTop: "30px",
     backgroundColor: "#ffc107",
     color: "black",
-    width: { xs: "60%", md: "10%", lg: "30%" },
+    width: { xs: "60%", md: "10%", lg: "35%" },
   },
 };

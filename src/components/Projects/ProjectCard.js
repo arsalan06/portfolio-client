@@ -36,7 +36,10 @@ function ProjectCard({ data }) {
         <Typography variant="body_text" sx={marginTopClass}>
           {data?.projectDescription?.substring(0, 135)}...
         </Typography>
-        <Link href={`/projectdetail/${data.id}`}>
+        <Link
+          href={`/projectdetail/${data.id}`}
+          style={{ textDecoration: "none" }}
+        >
           <Typography variant="order_text" sx={orderText}>
             show detail
             <Box

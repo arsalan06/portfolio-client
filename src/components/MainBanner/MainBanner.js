@@ -38,7 +38,7 @@ const MainBanner = ({ userName }) => {
       >
         <Box
           sx={{
-            width: { xs: "100%", sm: "100%", md: "80%", lg: "50%" },
+            width: { xs: "100%", sm: "100%", md: "80%", lg: "55%" },
             // display: "flex",
             // justifyContent: "center",
             // flexDirection: "column",
