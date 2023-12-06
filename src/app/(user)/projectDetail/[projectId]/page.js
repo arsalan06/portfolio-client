@@ -20,6 +20,7 @@ import { projects } from "@/components/Projects/projectData";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ReactShowMoreText from "react-show-more-text";
+export const dynamic = 'force-dynamic';
 function ProjectDetail({ params }) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
