@@ -20,7 +20,7 @@ import { projects } from "@/components/Projects/projectData";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ReactShowMoreText from "react-show-more-text";
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 function ProjectDetail({ params }) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
@@ -35,66 +35,73 @@ function ProjectDetail({ params }) {
     <Box
       sx={{
         padding: "10px 10px",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center"
       }}
     >
-      <Grid container spacing={4} sx={{ mt: 1 }}>
-      <Grid item xs={12} sm={12} md={12} lg={12}>
-      {projectData?.length > 0 && (
-        <Typography variant="main_heading">
-          {projectData[0]?.projectName}
-        </Typography>
-      )}
-      </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={12}>
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+      <Grid
+        container
+        spacing={4}
+        sx={{ mt: 1, width: matches ? "98%" : "95%" }}
       >
-        <Swiper
-          slidesPerView={matches ? 1 : 2}
-          spaceBetween={35}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={true}
-          modules={[Autoplay, Navigation, Pagination]}
-          className="mySwiper"
-          style={{
-            width: matches ? "90vw" : "70vw",
-            height: "300px",
-          }}
-        >
-          <Box>
-            {projectData?.length > 0 &&
-              projectData[0]?.Media?.projectImages?.map((img, index) => (
-                <SwiperSlide key={img.src}>
-                  <Image
-                    layout="fill"
-                    objectFit="cover"
-                    src={img.src}
-                    alt="helo"
-                    style={{cursor:"pointer"}}
-                    onClick={(e) => {
-                      setIsOpen(true);
-                      setCurrImg(index);
-                    }}
-                  />
-                </SwiperSlide>
-              ))}
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          {projectData?.length > 0 && (
+            <Typography variant="main_heading">
+              {projectData[0]?.projectName}
+            </Typography>
+          )}
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Swiper
+              slidesPerView={matches ? 1 : 2}
+              spaceBetween={35}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              pagination={true}
+              modules={[Autoplay, Navigation, Pagination]}
+              className="mySwiper"
+              style={{
+                width: matches ? "90vw" : "70vw",
+                height: "300px",
+              }}
+            >
+              <Box>
+                {projectData?.length > 0 &&
+                  projectData[0]?.Media?.projectImages?.map((img, index) => (
+                    <SwiperSlide key={img.src}>
+                      <Image
+                        layout="fill"
+                        objectFit="cover"
+                        src={img.src}
+                        alt="helo"
+                        style={{ cursor: "pointer" }}
+                        onClick={(e) => {
+                          setIsOpen(true);
+                          setCurrImg(index);
+                        }}
+                      />
+                    </SwiperSlide>
+                  ))}
+              </Box>
+              <SwiperNavButtons />
+            </Swiper>
           </Box>
-          <SwiperNavButtons />
-        </Swiper>
-      </Box>
-      </Grid>
-      {/* <Box sx={{ mt: 8 }}>
+        </Grid>
+        {/* <Box sx={{ mt: 8 }}>
         <Typography variant="main_heading">Project video</Typography>
       </Box> */}
-      {/* {projectData?.length > 0 && (
+        {/* {projectData?.length > 0 && (
         <Box
           sx={{
             backgroundColor:"#2B2B37",
@@ -115,7 +122,7 @@ function ProjectDetail({ params }) {
           ></video>
         </Box>
       )} */}
-        <Grid item xs={12} sm={12} md={12} lg={12} sx={{ mt: 8, pl:4, pr:4 }}>
+        <Grid item xs={12} sm={12} md={12} lg={12} sx={{ mt: 8, pl: 4, pr: 4 }}>
           <Typography variant="main_heading">Project detail</Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={8} lg={8}>
@@ -166,8 +173,8 @@ function ProjectDetail({ params }) {
             </Box>
           </Box>
         </Grid>
-      
-      {/* <Typography
+
+        {/* <Typography
         variant="main_heading"
       >
         Client reviews
@@ -249,27 +256,27 @@ function ProjectDetail({ params }) {
           <SwiperNavButtons />
         </Swiper>
       </Box> */}
-      <Grid item xs={12} sm={12} md={12} lg={12}>
-        <TotalProjectBanner />
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <TotalProjectBanner />
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Box>
+            <ContactBanner />
+          </Box>
+        </Grid>
+        {isOpen && (
+          <ImgsViewer
+            imgs={projectData[0]?.Media?.projectImages}
+            currImg={currImg}
+            showThumbnails={true}
+            isOpen={isOpen}
+            onClickPrev={(e) => setCurrImg(currImg - 1)}
+            onClickNext={(e) => setCurrImg(currImg + 1)}
+            onClickThumbnail={(index) => setCurrImg(index)}
+            onClose={(e) => setIsOpen(false)}
+          />
+        )}
       </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={12}>
-      <Box>
-        <ContactBanner />
-      </Box>
-      </Grid>
-      {isOpen && (
-        <ImgsViewer
-          imgs={projectData[0]?.Media?.projectImages}
-          currImg={currImg}
-          showThumbnails={true}
-          isOpen={isOpen}
-          onClickPrev={(e) => setCurrImg(currImg - 1)}
-          onClickNext={(e) => setCurrImg(currImg + 1)}
-          onClickThumbnail={(index) => setCurrImg(index)}
-          onClose={(e) => setIsOpen(false)}
-        />
-      )}
-    </Grid>
     </Box>
   );
 }
